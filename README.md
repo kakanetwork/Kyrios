@@ -15,6 +15,8 @@
 
 <p align="center">
 
+---
+
 RESUMO DO PROJETO:
 
   O projeto visa desenvolver uma plataforma web para análise de programas maliciosos em arquivos APK (Android Application Package).
@@ -22,6 +24,8 @@ RESUMO DO PROJETO:
   A nossa plataforma se destaca pela centralização e agilidade no acesso às informações sobre programas maliciosos, assim como a utilização de processos para análise dinâmica e estática dos arquivos em questão. Ao contrário dos métodos atuais, que são lentos, manuais e pouco intuitivos, onde a grande maioria possui apenas análises do tipo estáticas, oferecemos uma solução robusta e eficiente. Profissionais técnicos poderão obter rapidamente informações centralizadas, sem a necessidade de utilizar múltiplas ferramentas. Além disso, a plataforma é aberta para contribuições (open source), permitindo que especialistas contribuam com novas técnicas e ferramentas de análise.<br><br>
   Após a análise, os APKs processados serão armazenados em um banco de dados dedicado, transformando-se em uma valiosa fonte de consulta e tornando-se mais um diferencial da plataforma. Essa base de dados estará acessível através da plataforma web, proporcionando um recurso contínuo e expansível para futuras consultas e análises de segurança mais detalhadas.<br><br>
   A entrega final do MVP (Minimum Viable Product) visa fornecer uma plataforma estável, intuitiva e altamente disponível, com diversas ferramentas e serviços integrados. O MVP também será escalável, permitindo a adição de novas funcionalidades e a avaliação contínua de programas maliciosos.
+
+---
 
 INTRODUÇÃO:
 
@@ -44,6 +48,8 @@ altamente ativa nas plataformas Android. Além disso, constata-se que cerca de 5
 novos malwares são variantes de outros já existentes. Portanto, torna-se imprescindível
 adotar estratégias de proteção contra essas ameaças para mitigá-las. A partir dessas
 considerações, busca-se demonstrar o desenvolvimento de meios para tal objetivo.
+
+---
 
 JUSTIFICATIVA:
 
