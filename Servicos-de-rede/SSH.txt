@@ -15,3 +15,24 @@
 obs: user@ip (valores privados)
 
 ================================================================================================================================
+
+# Realizei também uma segurança extra utilizando autenticação Multifator no próprio SSH, com os seguintes comandos:
+
+    sudo apt-get install libpam-google-authenticator
+    google-authenticator
+
+    sudo nano /etc/pam.d/sshd
+            auth required pam_google_authenticator.so
+
+    sudo nano /etc/ssh/sshd_config
+            ChallengeResponseAuthentication yes
+            PasswordAuthentication yes
+            UsePAM yes
+
+    sudo systemctl restart sshd
+
+obs: código do autenticador cadastrado no aplicativo "authenticator" da google, no celular.
+Wiki: https://www.100security.com.br/ssh-google-authenticator
+
+================================================================================================================================
+
