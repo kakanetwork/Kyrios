@@ -51,7 +51,7 @@ EM DESENVOLVIMENTO....
 ## ⛳ Features
 - [x] Configurar o ambiente linux
 - [x] Configurar o ambiente do Django para desenvolvimento
-- [ ] Iniciar as possibilidades de emular android (testing)
+- [x] Iniciar as possibilidades de emular android (testing)
 - [ ] Configuração dos Servidores Web
 - [ ] Configuração do DNS e Domínio
 - [ ] Criação do Banco de dados e Configuração Básica
