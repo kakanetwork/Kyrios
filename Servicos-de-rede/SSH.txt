@@ -1,0 +1,17 @@
+================================================================================================================================
+
+# Realizada a criação do acesso SSH, com os seguintes comandos:
+
+    sudo apt-get update
+    sudo apt-get upgrade
+ 
+    sudo apt-get install -y openssh-server
+    sudo nano /etc/ssh/sshd_config
+            Port 22
+            PermitRootLogin no
+            AllowUsers user@ip
+    sudo systemctl restart ssh 
+
+obs: user@ip (valores privados)
+
+================================================================================================================================
