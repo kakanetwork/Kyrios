@@ -15,6 +15,11 @@
         sudo chown -R django:django /srv/djangoproj/.venv
         source .venv/bin/activate
 
+        # Instalar bibliotecas
+        pip install django django-pwa requests
+
 # Criei mais um usuário para dedicar ao Django e ele usar.
 
 ================================================================================================================================
+
+
