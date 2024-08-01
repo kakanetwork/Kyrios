@@ -1,0 +1,16 @@
+================================================================================================================================
+
+# Configuração do Python e Venv
+        sudo adduser --system --group --no-create-home django
+        sudo mkdir -p /srv/djangoproj
+        sudo chown -R root:django /srv/djangoproj
+        sudo chmod -R 750 /srv/djangoproj 
+
+        sudo apt-get update
+        sudo apt-get install python3 python3-pip python3-venv
+    
+   
+
+# Criei mais um usuário para dedicar ao Django e ele usar.
+
+================================================================================================================================
