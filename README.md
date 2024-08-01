@@ -3,7 +3,7 @@
 
 <p align="center">
   <img src="http://img.shields.io/static/v1?label=License&message=MIT%20License&color=A20606&style=for-the-badge"/>
-  <img src="http://img.shields.io/static/v1?label=Python&message=3.12.0&color=A20606&style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="http://img.shields.io/static/v1?label=Python&message=3.11.0&color=A20606&style=for-the-badge&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/static/v1?label=Django&message=GUI/FRAMEWORK&color=A20606&style=for-the-badge&logo=Django"/>
   <img src="http://img.shields.io/static/v1?label=STATUS&message=Em%20desenvolvimento&color=A20606&style=for-the-badge"/>
 </p>
