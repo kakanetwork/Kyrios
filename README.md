@@ -17,7 +17,7 @@
 
 ---
 
-RESUMO DO PROJETO:
+## RESUMO DO PROJETO:
 
   O projeto visa desenvolver uma plataforma web para análise de programas maliciosos em arquivos APK (Android Application Package).
   A proposta do projeto visa integrar diversas plataformas de análise já existentes com outras tecnologias embutidas, como, por exemplo, a API VirusTotal, implementação das Yara Rules, novas funcionalidades e tecnologias no processo de análise.<br><br>
@@ -27,7 +27,7 @@ RESUMO DO PROJETO:
 
 ---
 
-INTRODUÇÃO:
+## INTRODUÇÃO:
 
 A segurança de rede, em síntese, refere-se tanto à proteção contra o uso malicioso de
 informações, quanto à preservação da autenticidade e da confiabilidade de dados. Além
@@ -51,7 +51,7 @@ considerações, busca-se demonstrar o desenvolvimento de meios para tal objetiv
 
 ---
 
-JUSTIFICATIVA:
+## JUSTIFICATIVA:
 
 Nos últimos anos, as ameaças à cibersegurança têm crescido exponencialmente,
 destacando a relevância deste projeto para enfrentar a proliferação de malware na era
@@ -126,8 +126,8 @@ segurança cibernética e social.
 
 ---
 
-## 🔨 
-EM DESENVOLVIMENTO....
+## PLANEJAMENTO DOS SPRINTS
+
 
 ---
 
