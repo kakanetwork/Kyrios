@@ -22,14 +22,16 @@
 ## 🗺 Tabela de conteúdos
 
 <ul>
-  <li><a href="#-features">Features</a></li>
-  <li><a href="#-licença">Licença</a></li>
-  <li><a href="#-mais-informações">Mais informações</a></li>
+  <li><a href="#-diagrama">📈 Diagrama</a></li>
+  <li><a href="#-pitch-deck---entenda-nosso-projeto">🏆 Pitch Deck - Entenda nosso Projeto</a></li>
+  <li><a href="#-Detalhes-do-Projeto">✒️ Detalhes do Projeto</a></li>
+  <li><a href="#-features">⛳ Features</a></li>
+  <li><a href="#-mais-informações">👀 Mais informações</a></li>
 </ul>
 
 ---
 
-## Diagrama 
+## 📈 Diagrama 
 ![3 840](https://github.com/user-attachments/assets/677f2c9f-06f2-4878-b5ab-e54f25b732f1)
 
 ---
