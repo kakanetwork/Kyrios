@@ -12,8 +12,17 @@ Senha: xxxxxxxxxx (vault)
 ================================================================================================================================
 
 Comandos:
-
 sudo adduser --system --group kalvin
 sudo adduser --system --group jose
+
+Corrigindo:
+sudo delgroup jose
+sudo delgroup kalvin
+sudo deluser jose
+sudo deluser kalvin
+sudo adduser kalvin
+sudo adduser jose
+
+Motivo: --system não permite logar com o usuário
 
 ================================================================================================================================
