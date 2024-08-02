@@ -268,7 +268,7 @@ se, os APKs processados serão armazenados em um banco de dados dedicado, transf
 
 ## 🏆 Pitch Deck - Entenda nosso Projeto
 
-https://github.com/user-attachments/assets/64038d1a-57fb-4b21-9f53-071070463498
+https://github.com/user-attachments/assets/d3bd572d-44c9-493b-8505-7263ddb8faae
 
 ---
 
