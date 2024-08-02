@@ -19,6 +19,23 @@
 
 ---
 
+## 🗺 Tabela de conteúdos
+
+<ul>
+  <li><a href="#-features">Features</a></li>
+  <li><a href="#-licença">Licença</a></li>
+  <li><a href="#-mais-informações">Mais informações</a></li>
+</ul>
+
+---
+
+## Diagrama 
+![3 840](https://github.com/user-attachments/assets/677f2c9f-06f2-4878-b5ab-e54f25b732f1)
+
+---
+
+## ✒️ Detalhes do Projeto
+
 <details>
   <summary><h3>🔍 Resumo da Proposta</h3></summary>
   <p align="left">
@@ -27,7 +44,8 @@
       <br><br>
       A nossa plataforma se destaca pela centralização e agilidade no acesso às informações sobre programas maliciosos, assim como a utilização de processos para análise dinâmica e estática dos arquivos em questão. Ao contrário dos métodos atuais, que são lentos, manuais e pouco intuitivos, onde a grande maioria possui apenas análises do tipo estáticas, oferecemos uma solução robusta e eficiente. Profissionais técnicos poderão obter rapidamente informações centralizadas, sem a necessidade de utilizar múltiplas ferramentas. Além disso, a plataforma é aberta para contribuições (open source), permitindo que especialistas contribuam com novas técnicas e ferramentas de análise.
       <br><br>
-      Após a análise, os APKs processados serão armazenados em um banco de dados dedicado, transformando-se em uma valiosa fonte de consulta e tornando-se mais um diferencial da plataforma. Essa base de dados estará acessível através da plataforma web, proporcionando um recurso contínuo e expansível para futuras consultas e análises de segurança mais detalhadas.
+      Após a análi![3 840](https://github.com/user-attachments/assets/4ece046c-a527-4112-9978-584cb63a5ec7)
+se, os APKs processados serão armazenados em um banco de dados dedicado, transformando-se em uma valiosa fonte de consulta e tornando-se mais um diferencial da plataforma. Essa base de dados estará acessível através da plataforma web, proporcionando um recurso contínuo e expansível para futuras consultas e análises de segurança mais detalhadas.
       <br><br>
       A entrega final do MVP (Minimum Viable Product) visa fornecer uma plataforma estável, intuitiva e altamente disponível, com diversas ferramentas e serviços integrados. O MVP também será escalável, permitindo a adição de novas funcionalidades e a avaliação contínua de programas maliciosos.
       <br><br>
@@ -248,13 +266,9 @@
 
 ---
 
-## 🗺 Tabela de conteúdos
+## 🏆 Pitch Deck - Entenda nosso Projeto
 
-<ul>
-  <li><a href="#-features">Features</a></li>
-  <li><a href="#-licença">Licença</a></li>
-  <li><a href="#-mais-informações">Mais informações</a></li>
-</ul>
+https://github.com/user-attachments/assets/64038d1a-57fb-4b21-9f53-071070463498
 
 ---
 
