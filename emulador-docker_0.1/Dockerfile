@@ -1,8 +1,8 @@
 FROM debian:12.6
 
-WORKDIR /var/sdk_android
+WORKDIR /var/android_sdk
 
-COPY cmdline-tools /var/sdk_android/cmdline-tools
+COPY cmdline-tools /var/android_sdk/cmdline-tools
 
 RUN mkdir cmdline-tools/latest && \
     cd cmdline-tools && \
@@ -12,3 +12,15 @@ RUN mkdir cmdline-tools/latest && \
     mv source.properties latest
 
 CMD ["tail", "-f", "/dev/null"]
+
+
+# cd /var/android_sdk/cmdline-tools/latest/bin
+# apt-get update
+# apt-get install default-jdk libpulse0 (necessita confirmacao)
+# ./sdkmanager --sdk_root=/home/jose/Downloads/android_sdk/
+# ./sdkmanager 'system-images;android-30;google_apis;x86' (necessita 2 confirmacao)
+# ./avdmanager create avd -k 'system-images;android-30;google_apis;x86' -n Nexus_XL_API_30 (necessita confirmacao)
+# export ANDROID_HOME=/var/android_sdk
+# ./sdkmanager --install "platform-tools" "platforms;android-30"
+# cd /var/android_sdk/emulator
+# ./emulator -avd Nexus_XL_API_30 -no-window
