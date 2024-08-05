@@ -1,0 +1,11 @@
+sudo apt-get update
+sudo apt-get upgrade
+
+# Configuração Postgresql
+sudo apt-get install postgresql postgresql-contrib
+sudo adduser --system --group --no-create-home postgres
+sudo -i -u postgres
+psql
+    CREATE USER srv_django WITH PASSWORD 'senha';
+    CREATE DATABASE dbdjango OWNER srv_django;
+    GRANT ALL PRIVILEGES ON DATABASE dbdjango TO srv_django;
