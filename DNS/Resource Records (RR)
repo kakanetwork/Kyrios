@@ -1,0 +1,15 @@
+// Abaixo estão as configurações principais de domínio
+
+CNAME	www	                0	kyrios.space    	                                300	
+A	    @	                0   15.228.147.145	                                    100
+
+// Abaixo estão os meus CAA's que estão autorizados a certificar meu domínio
+
+CAA	    @	                0	issue "comodoca.com"	                            14400	
+CAA	    @	                0	issue "digicert.com"	                            14400	
+CAA	    @	                0   issue "globalsign.com"	                            14400	
+CAA	    @	                0	issue "letsencrypt.org"	                            14400	
+CAA	    @	                0	issuewild "comodoca.com"	                        14400	
+CAA	    @	                0   issuewild "digicert.com"	                        14400	
+CAA	    @	                0	issuewild "globalsign.com"  	                    14400	
+CAA	    @	                0	issuewild "letsencrypt.org"	                        14400	
