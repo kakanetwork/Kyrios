@@ -177,81 +177,84 @@ se, os APKs processados serão armazenados em um banco de dados dedicado, transf
 </details>
 <details>
   <summary><h3>📅 Planejamento de Sprints</h3></summary>
-  <h4>
-    <details>
-      <summary><h4>SPRINT 1 - DATA (Iniciando: 01/08/2024)</h4></summary>
-      <p align="left">
-        <strong>1.1 - Configurar o ambiente Linux com a devida segurança (SSH, Usuários, Permissões)</strong><br>
-        José: Configuração inicial do ambiente Linux e SSH.<br>
-        José: Criação e configuração de usuários e permissões.<br><br>
-        <strong>2.1 - Configurar o framework Django para o desenvolvimento</strong><br>
-        Kalvin: Instalação e configuração básica do Django.<br>
-        Kalvin: Criação do projeto Django e configuração inicial.<br><br>
-        <strong>2.2 - Integrar e conectar o Django aos serviços de redes necessários</strong><br>
-        Kalvin: Integração do Django com o banco de dados.<br>
-        Kalvin: Configuração de serviços de redes no Django.
-      </p>
-    </details>
-    <details>
-      <summary><h4>SPRINT 2 - DATA (Iniciando: 08/08/2024)</h4></summary>
-      <p align="left">
-        <strong>1.2 - Configuração dos servidores web (Nginx e Gunicorn com WSGI)</strong><br>
-        Kalvin: Configuração do Nginx para servir o Django.<br>
-        Kalvin: Configuração do Gunicorn como servidor WSGI.<br><br>
-        <strong>1.3 - Configurar os Serviços de DNS e domínios</strong><br>
-        José: Configuração dos serviços de DNS.<br>
-        José: Configuração dos domínios e verificação.
-      </p>
-    </details>
-    <details>
-      <summary><h4>SPRINT 3 - DATA (Iniciando: 15/08/2024)</h4></summary>
-      <p align="left">
-        <strong>2.3 - Realizar a pré-integração com o frontend para envio de dados</strong><br>
-        Kalvin: Desenvolvimento das APIs básicas no Django.<br>
-        Kalvin: Configuração do frontend para interagir com as APIs.<br><br>
-        <strong>1.4 - Ajustar os serviços de Banco de dados e ajuste das credenciais</strong><br>
-        José: Ajuste de configurações e credenciais do banco de dados.<br>
-        José: Verificação e testes de conectividade com o banco de dados.
-      </p>
-    </details>
-    <details>
-      <summary><h4>SPRINT 4 - DATA (Iniciando: 22/08/2024)</h4></summary>
-      <p align="left">
-        <strong>3.1 - Desenvolver a Estrutura de todo HTML, Layouts e estilos Bootstrap</strong><br>
-        Kalvin: Desenvolvimento da estrutura HTML e layouts básicos.<br>
-        Kalvin: Aplicação de estilos e temas utilizando Bootstrap.<br><br>
-        <strong>4.1 - Configurar ambientes Docker para execução de análises dinâmicas</strong><br>
-        José: Configuração inicial dos containers Docker.<br>
-        José: Criação de imagens Docker para análise dinâmica.
-      </p>
-    </details>
-    <details>
-      <summary><h4>SPRINT 5 - DATA (Iniciando: 29/08/2024)</h4></summary>
-      <p align="left">
-        <strong>5.1 - Implementar métodos para a análise estática de arquivos APK</strong><br>
-        Kalvin: Desenvolvimento dos métodos de análise estática.<br>
-        Kalvin: Implementação de integração com ferramentas de análise estática.<br><br>
-        <strong>5.2 - Integrar as YARA Rules para detecção de padrões de malware</strong><br>
-        José: Implementação das YARA Rules no processo de análise estática.<br>
-        José: Teste e validação das regras YARA.
-      </p>
-    </details>
-    <details>
-      <summary><h4>SPRINT 6 - DATA (Iniciando: 05/09/2024)</h4></summary>
-      <p align="left">
-        <strong>6.1 - Testar e validar a integração entre as diferentes camadas da aplicação</strong><br>
-        Kalvin: Testes de integração entre frontend e backend.<br>
-        José: Validação e correção de bugs encontrados na integração.<br><br>
-        <strong>6.2 - Realização de uma massa de testes com Malwares reais e analisar os resultados fornecidos pela plataforma</strong><br>
-        José: Execução de testes com malwares reais (buscar por malwares exemplos).<br>
-        Kalvin: Análise e documentação dos resultados obtidos.
-      </p>
-    </details>
+  <h5>
+    <blockquote>
+      <details>
+        <summary><h4>SPRINT 1 - DATA (Iniciando: 01/08/2024)</h4></summary>
+        <p align="left">
+          <strong>1.1 - Configurar o ambiente Linux com a devida segurança (SSH, Usuários, Permissões)</strong><br>
+          José: Configuração inicial do ambiente Linux e SSH.<br>
+          José: Criação e configuração de usuários e permissões.<br><br>
+          <strong>2.1 - Configurar o framework Django para o desenvolvimento</strong><br>
+          Kalvin: Instalação e configuração básica do Django.<br>
+          Kalvin: Criação do projeto Django e configuração inicial.<br><br>
+          <strong>2.2 - Integrar e conectar o Django aos serviços de redes necessários</strong><br>
+          Kalvin: Integração do Django com o banco de dados.<br>
+          Kalvin: Configuração de serviços de redes no Django.
+        </p>
+      </details>
+      <details>
+        <summary><h4>SPRINT 2 - DATA (Iniciando: 08/08/2024)</h4></summary>
+        <p align="left">
+          <strong>1.2 - Configuração dos servidores web (Nginx e Gunicorn com WSGI)</strong><br>
+          Kalvin: Configuração do Nginx para servir o Django.<br>
+          Kalvin: Configuração do Gunicorn como servidor WSGI.<br><br>
+          <strong>1.3 - Configurar os Serviços de DNS e domínios</strong><br>
+          José: Configuração dos serviços de DNS.<br>
+          José: Configuração dos domínios e verificação.
+        </p>
+      </details>
+      <details>
+        <summary><h4>SPRINT 3 - DATA (Iniciando: 15/08/2024)</h4></summary>
+        <p align="left">
+          <strong>2.3 - Realizar a pré-integração com o frontend para envio de dados</strong><br>
+          Kalvin: Desenvolvimento das APIs básicas no Django.<br>
+          Kalvin: Configuração do frontend para interagir com as APIs.<br><br>
+          <strong>1.4 - Ajustar os serviços de Banco de dados e ajuste das credenciais</strong><br>
+          José: Ajuste de configurações e credenciais do banco de dados.<br>
+          José: Verificação e testes de conectividade com o banco de dados.
+        </p>
+      </details>
+      <details>
+        <summary><h4>SPRINT 4 - DATA (Iniciando: 22/08/2024)</h4></summary>
+        <p align="left">
+          <strong>3.1 - Desenvolver a Estrutura de todo HTML, Layouts e estilos Bootstrap</strong><br>
+          Kalvin: Desenvolvimento da estrutura HTML e layouts básicos.<br>
+          Kalvin: Aplicação de estilos e temas utilizando Bootstrap.<br><br>
+          <strong>4.1 - Configurar ambientes Docker para execução de análises dinâmicas</strong><br>
+          José: Configuração inicial dos containers Docker.<br>
+          José: Criação de imagens Docker para análise dinâmica.
+        </p>
+      </details>
+      <details>
+        <summary><h4>SPRINT 5 - DATA (Iniciando: 29/08/2024)</h4></summary>
+        <p align="left">
+          <strong>5.1 - Implementar métodos para a análise estática de arquivos APK</strong><br>
+          Kalvin: Desenvolvimento dos métodos de análise estática.<br>
+          Kalvin: Implementação de integração com ferramentas de análise estática.<br><br>
+          <strong>5.2 - Integrar as YARA Rules para detecção de padrões de malware</strong><br>
+          José: Implementação das YARA Rules no processo de análise estática.<br>
+          José: Teste e validação das regras YARA.
+        </p>
+      </details>
+      <details>
+        <summary><h4>SPRINT 6 - DATA (Iniciando: 05/09/2024)</h4></summary>
+        <p align="left">
+          <strong>6.1 - Testar e validar a integração entre as diferentes camadas da aplicação</strong><br>
+          Kalvin: Testes de integração entre frontend e backend.<br>
+          José: Validação e correção de bugs encontrados na integração.<br><br>
+          <strong>6.2 - Realização de uma massa de testes com Malwares reais e analisar os resultados fornecidos pela plataforma</strong><br>
+          José: Execução de testes com malwares reais (buscar por malwares exemplos).<br>
+          Kalvin: Análise e documentação dos resultados obtidos.
+        </p>
+      </details>
+    </blockquote>
     <p align="center">
       <strong>Finalizando o SPRINT 6 - DIA 05/09/2024 - COM MVP PRONTO</strong>
     </p>
-  </h4>
+  </h5>
 </details>
+
 <details>
   <summary><h3>📚 Referências Bibliográficas</h3></summary>
   <p align="left">
@@ -278,9 +281,9 @@ https://github.com/user-attachments/assets/d3bd572d-44c9-493b-8505-7263ddb8faae
 - [x] Configurar o ambiente linux
 - [x] Configurar o ambiente do Django para desenvolvimento
 - [x] Iniciar as possibilidades de emular android (testing)
-- [ ] Configuração dos Servidores Web
-- [ ] Configuração do DNS e Domínio
-- [ ] Criação do Banco de dados e Configuração Básica
+- [x] Configuração dos Servidores Web
+- [x] Configuração do DNS e Domínio
+- [x] Criação do Banco de dados e Configuração Básica
 - [ ] Validação do Backend para enviar os dados
 - [ ] Protótipo da Análise Dinâmica
 - [ ] Desenvolver a estrutura do Frontend
