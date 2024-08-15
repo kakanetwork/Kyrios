@@ -4,23 +4,19 @@ WORKDIR /var/android_sdk
 
 COPY cmdline-tools /var/android_sdk/cmdline-tools
 
-RUN mkdir cmdline-tools/latest && \
-    cd cmdline-tools && \
-    mv bin latest && \
-    mv lib latest && \
-    mv NOTICE.txt latest && \
-    mv source.properties latest
+ENV ANDROID_HOME=/var/android_sdk
+ENV PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+ENV PATH=$PATH:$ANDROID_HOME/emulator
+
+RUN apt-get update -y && \
+    apt-get install default-jdk libpulse0 -y && \
+    sdkmanager --sdk_root=$ANDROID_HOME && \
+    yes | sdkmanager 'system-images;android-30;google_apis;x86' 'emulator' 'platform-tools' 'platforms;android-30' && \
+    echo "no" | avdmanager create avd -k 'system-images;android-30;google_apis;x86' -n Nexus_XL_API_30 
+    emulator -avd Nexus_XL_API_30 -no-window
+
+
 
 CMD ["tail", "-f", "/dev/null"]
 
-
-# cd /var/android_sdk/cmdline-tools/latest/bin
-# apt-get update
-# apt-get install default-jdk libpulse0 (necessita confirmacao)
-# ./sdkmanager --sdk_root=/home/jose/Downloads/android_sdk/
-# ./sdkmanager 'system-images;android-30;google_apis;x86' (necessita 2 confirmacao)
-# ./avdmanager create avd -k 'system-images;android-30;google_apis;x86' -n Nexus_XL_API_30 (necessita confirmacao)
-# export ANDROID_HOME=/var/android_sdk
-# ./sdkmanager --install "platform-tools" "platforms;android-30"
-# cd /var/android_sdk/emulator
-# ./emulator -avd Nexus_XL_API_30 -no-window
+# ./emulator -avd Nexus_XL_API_30 -no-window -no-accel -no-boot-anim -wipe-data -no-metrics
