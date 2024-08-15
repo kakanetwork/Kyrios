@@ -12,7 +12,7 @@ RUN apt-get update -y && \
     apt-get install default-jdk libpulse0 -y && \
     sdkmanager --sdk_root=$ANDROID_HOME && \
     yes | sdkmanager 'system-images;android-30;google_apis;x86' 'emulator' 'platform-tools' 'platforms;android-30' && \
-    echo "no" | avdmanager create avd -k 'system-images;android-30;google_apis;x86' -n Nexus_XL_API_30 
+    echo "no" | avdmanager create avd -k 'system-images;android-30;google_apis;x86' -n Nexus_XL_API_30
     emulator -avd Nexus_XL_API_30 -no-window
 
 
