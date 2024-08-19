@@ -17,7 +17,4 @@ RUN apt-get update -y && \
     emulator -avd Nexus_XL_API_30 -no-window
 
 EXPOSE 5554 5555 5037
-
-CMD ["tail", "-f", "/dev/null"]
-
-# ./emulator -avd Nexus_XL_API_30 -no-window -no-accel -no-boot-anim -wipe-data -no-metrics
+CMD ["emulator", "-avd", "Nexus_XL_API_30", "-no-window", "-no-audio", "-no-snapshot-load", "-no-snapshot-save","-no-accel", "-no-boot-anim","-wipe-data", "-no-metrics"]
