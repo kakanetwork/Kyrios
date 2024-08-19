@@ -16,7 +16,7 @@ RUN apt-get update -y && \
     echo "no" | avdmanager create avd -k 'system-images;android-30;google_apis;x86' -n Nexus_XL_API_30
     emulator -avd Nexus_XL_API_30 -no-window
 
-
+EXPOSE 5554 5555 5037
 
 CMD ["tail", "-f", "/dev/null"]
 
