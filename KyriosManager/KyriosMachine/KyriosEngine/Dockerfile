@@ -7,6 +7,7 @@ COPY cmdline-tools /var/android_sdk/cmdline-tools
 ENV ANDROID_HOME=/var/android_sdk
 ENV PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 ENV PATH=$PATH:$ANDROID_HOME/emulator
+ENV PATH=$PATH:$ANDROID_HOME/platform-tools
 
 RUN apt-get update -y && \
     apt-get install default-jdk libpulse0 -y && \
