@@ -21,7 +21,29 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR,'templates','static', 'js', 'serviceworker.js')
+
+LOGIN_URL = os.getenv('LOGIN_URL')
+
 SECRET_KEY = os.getenv('SECRET_KEY')
+ 
+DEBUG = os.getenv('DEBUG')
+
+RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY')
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
+
+API_VT_KEY = os.getenv('API_VT_KEY')
+
+# ==================================================================================================================
+
+
+""" CONFIGURAÇÕES DO DOMÍNIO DE EMAILS PELO MAILTRAP """
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '9883bedc50c941'
+EMAIL_HOST_PASSWORD = os.getenv('MAILTRAP_PASSWORD')
+EMAIL_PORT = os.getenv('MAILTRAP_PORT')
+
 
 # ==================================================================================================================
 
@@ -29,6 +51,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 """ PRÁTICAS DE SEGURANÇA """
 
 ALLOWED_HOSTS = ['127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['127.0.0.1']
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 
 # ==================================================================================================================
@@ -75,6 +106,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'kyrios.wsgi.application'
+
 
 
 # ==================================================================================================================
@@ -137,3 +169,63 @@ STATIC_ROOT = os.path.join('static')
 
 
 # ==================================================================================================================
+
+""" CONFIGURAÇÕES PRINCIPAIS DO PWA """
+
+PWA_APP_NAME = 'Kyrios'
+PWA_APP_THEME_COLOR = '#ff0303'
+PWA_APP_BACKGROUND_COLOR = '#000000'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_ORIENTATION = 'portrait'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/img/icons/icon-192x192.png',
+        'sizes': '192x192',
+        'type': 'image/png',
+    },
+    {
+        'src': '/static/img/icons/icon-512x512.png',
+        'sizes': '512x512',
+        'type': 'image/png',
+    }
+]
+
+# ==================================================================================================================
+
+
+""" CONFIGURAÇÕES SECUNDÁRIAS DO PWA """
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
+                       'pathname=%(pathname)s lineno=%(lineno)s ' +
+                       'funcname=%(funcName)s %(message)s'),
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        }
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'testlogger': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        }
+    }
+}

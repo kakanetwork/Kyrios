@@ -1,12 +1,123 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+{% load pwa %}
 <head>
+    {% progressive_web_app_meta %}
     <meta charset="utf-8">
     <title>Kyrios Analysis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/static/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1> TESTE LOGIN - FAZER FORMULÁRIO </h1>
+    <div class="container-fluid position-relative d-flex p-0">
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Carregando...</span>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <a href="#" class="">
+                                <h3 class="text-primary" style="margin-top: 2px;"><i class="fas fa-shield-alt"></i> Kyrios Analysis</h3>
+                            </a>
+                            <h3>Login</h3>
+                        </div>
+                        <form  id="loginForm" method="post" action="{% url 'signin' %}">
+                            {% csrf_token %}
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                                <label for="password">Senha</label>
+                                <br>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %} alert-dismissible fade show" style="font-size: 12px; text-align: center;" role="alert">
+                                            <b><i class="fa fa-exclamation-circle me-2"></i>{{ message|safe }}</b> 
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <div id="recaptchaModal" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content bg-secondary rounded p-4">
+                                        <div class="modal-header mt-0 border-0">
+                                            <h5 class="modal-title mt-0">Verificação reCAPTCHA</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body d-flex justify-content-center align-items-center">
+                                            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+                                        </div>
+                                        <div class="modal-footer mt-0  border-0">
+                                            <button type="button" class="btn btn-primary" id="submitWithRecaptcha">Enviar</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Mantenha-me Conectado</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Entrar</button>
+                            <p class="text-center mb-0">Não possui conta? <a href="{% url 'signup' %}">Criar Conta</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var loginForm = document.getElementById('loginForm');
+            var recaptchaModal = new bootstrap.Modal(document.getElementById('recaptchaModal'));
+        
+            loginForm.addEventListener('submit', function(event) {
+                // Impedir o envio do formulário
+                event.preventDefault();
+        
+                // Exibir o modal reCAPTCHA
+                recaptchaModal.show();
+            });
+        
+            // Tratar o clique no botão "Enviar" dentro do modal
+            document.getElementById('submitWithRecaptcha').addEventListener('click', function() {
+                // Enviar o formulário após a verificação do reCAPTCHA
+                loginForm.submit();
+            });
+        });
+    </script>
+        
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    
 </body>
 
 </html>
