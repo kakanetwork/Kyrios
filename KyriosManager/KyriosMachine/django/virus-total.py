@@ -42,10 +42,7 @@ def VT_api(file):
     
     #Nivel de Ameaca para a rede
     rede_ameaca = response["data"]['attributes']["crowdsourced_ids_stats"]
-    
-    #Primeiro avistamento
-    primeiro_avistamento = (datetime.fromtimestamp(response["data"]['attributes']["first_submission_date"])).strftime('%Y-%m-%d %H:%M:%S')
-    
+
     #Contexto de rede (IP,URLs,Hosts) cadastrado por IDS
     tam_res = len(response["data"]['attributes']["crowdsourced_ids_results"])
     contexto_rede = []
@@ -54,5 +51,8 @@ def VT_api(file):
             pass
         else:
             contexto_rede.append(response["data"]['attributes']["crowdsourced_ids_results"][a]["alert_context"])
-    print(contexto_rede)
-    return {'categoria_ameaca':categoria_ameaca,'classificacao_ameaca':classificacao_ameaca,'antivirus_resultados':antivirus_resultados,'rede_ameaca':rede_ameaca, 'primeiro_avistamento':primeiro_avistamento }
+    
+    #Primeiro avistamento
+    primeiro_avistamento = (datetime.fromtimestamp(response["data"]['attributes']["first_submission_date"])).strftime('%Y-%m-%d %H:%M:%S')
+
+    return {'categoria_ameaca':categoria_ameaca,'classificacao_ameaca':classificacao_ameaca,'antivirus_resultados':antivirus_resultados,'rede_ameaca':rede_ameaca,'contexto_rede':contexto_rede, 'primeiro_avistamento':primeiro_avistamento }
