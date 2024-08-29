@@ -262,11 +262,11 @@ https://github.com/user-attachments/assets/d3bd572d-44c9-493b-8505-7263ddb8faae
 - [x] Configuração dos Servidores Web
 - [x] Configuração do DNS e Domínio
 - [x] Criação do Banco de dados e Configuração Básica
-- [ ] Validação do Backend para enviar os dados
-- [ ] Protótipo da Análise Dinâmica
-- [ ] Desenvolver a estrutura do Frontend
-- [ ] Integrar novas ferramentas para análise
-- [ ] Implementação de métodos para Análises Estáticas
+- [x] Validação do Backend para enviar os dados
+- [x] Protótipo da Análise Dinâmica
+- [x] Desenvolver a estrutura do Frontend
+- [x] Integrar novas ferramentas para análise
+- [x] Implementação de métodos para Análises Estáticas
 - [ ] Implementação das Regras YARA
 - [ ] Testar e Validar a plataforma
 - [ ] Realizar a documentação da Plataforma
