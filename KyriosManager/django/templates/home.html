@@ -61,8 +61,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{% url 'home' %}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
-                    <a href="{% url 'table' %}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tabela de Análises</a>
-                    <a href="{% url 'chart' %}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Gráficos</a>
+                    <a href="{% url 'table' %}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Histórico</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Opções da Conta</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -83,24 +82,8 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-                </form>
                 <div class="navbar-nav align-items-center ms-auto">
-                    
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificação</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0  dropdown-shadow">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                        </div>
-                    </div>
+                
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="/static/img/user.png" alt="" style="width:30px; height: 30px;">
@@ -159,16 +142,31 @@
             </div>
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="d-flex align-items-center justify-content-between mb-1">
                         <h6 class="mb-0">Analise seu Arquivo</h6>
                     </div>
                     <div class="table-responsive">
                         <form id="fileForm" method="POST" enctype="multipart/form-data" autocomplete="off">
                             {% csrf_token %}
+
+                            <div class="d-flex justify-content-center mb-2">
+                                <div class="form-check form-check-inline me-4">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" onclick="showAlert()" name="AD">
+                                    <label class="form-check-label" for="inlineCheckbox1">Análise Dinâmica (Opcional)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" disabled="" checked>
+                                    <label class="form-check-label" for="inlineCheckbox3">Análise Estática (Padrão)</label>
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <input class="form-control bg-dark" type="file" id="formFile" name="apk_file" accept=".apk" required>
                                 <small id="fileHelp" class="form-text text-muted">O arquivo deve ser do tipo APK.</small>
                             </div>
+
+                            <!-- Toggle switch -->
+
                             {% if messages %}
                                 {% for message in messages %}
                                     <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %} alert-dismissible fade show" style="font-size: 12px; text-align: center;" role="alert">
@@ -179,6 +177,7 @@
                             {% endif %}
                         
                             <button class="btn btn-outline-primary w-100" type="submit">Analisar</button>
+
                         </form>
                         
                             
@@ -262,6 +261,23 @@
         </div>
     </div>
 
+
+
+
+    <!-- Toast Notification -->
+
+    <!-- Notification Alert -->
+    <div id="notificacao_analisedinamica" class="alert alert-danger alert-dismissible fade show" style="font-size: 12px; text-align: center; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); width: auto; z-index: 1050; display: none;" role="alert">
+        <b><i class="fa fa-exclamation-circle me-2"></i>Análise Dinâmica Ativada: Esta opção pode levar mais tempo ou te colocar em uma "Fila de Espera" enquanto outras análises são realizadas no nosso sistema, deseja aguardar?</b> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+        function showAlert() {
+            var alertBox = document.getElementById('notificacao_analisedinamica');
+            alertBox.style.display = 'block';  // Mostra o alerta
+        }
+    </script>
     <script src="/static/js/table-home.js"></script>
     <script src="/static/lib/chart/chart.min.js"></script>
 

@@ -61,8 +61,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{% url 'home' %}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
-                    <a href="{% url 'table' %}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Tabela de Análises</a>
-                    <a href="{% url 'chart' %}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Gráficos</a>
+                    <a href="{% url 'table' %}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Histórico</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Opções da Conta</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -83,24 +82,9 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-                </form>
+
                 <div class="navbar-nav align-items-center ms-auto">
-                    
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificação</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0  dropdown-shadow">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                        </div>
-                    </div>
+        
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="/static/img/user.png" alt="" style="width:30px; height: 30px;">
@@ -131,43 +115,52 @@
                             <h6 class="mb-0">Analise Detalhada</h6>
                             </div>
                             <div class="accordion" id="accordionExample">
+
                                 <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Resultado da Análise Estática
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" aria-expanded="True">
+                                            Resumo das Detecções
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-collapse collapse show">
                                         <div class="accordion-body table-responsive">
                                             <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                <thead>
+                                                    <tr class="text-white">
+                                                        <th scope="col">Malicioso</th>
+                                                        <th scope="col">Suspeito</th>
+                                                        <th scope="col">Não Detectado</th>
+                                                        <th scope="col">Inofensivo</th>
+                                                        <th scope="col">Sem Respostas</th>
+                                                        <th scope="col">Timeout</th>
+                                                        <th scope="col">Falhou</th>
+                                                        <th scope="col">Tipo não suportado</th>  
+                                                    </tr>
+                                                </thead>
                                                 <tbody>
                                                     {% for analise_apk in analises_apk %}
-                                                    <tr class="text-white">
-                                                        <th scope="row">MD5</th>
-                                                        <td>{{ analise_apk.estatica.MD5 }}</td>
-                                                    </tr>
-                                                    <tr class="text-white">
-                                                        <th scope="row">SHA-1</th>
-                                                        <td>{{ analise_apk.estatica.SHA1 }}</td>
-                                                    </tr>
-                                                    <tr class="text-white">
-                                                        <th scope="row">sha-256</th>
-                                                        <td>{{ analise_apk.estatica.sha256 }}</td>
-                                                    </tr>
-                                                    <tr class="text-white">
-                                                        <th scope="row">strings</th>
-                                                        <td>{{ analise_apk.estatica.strings }}</td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.malicious }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.suspicious }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.undetected }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.harmless }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.timeout }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.confirmedtimeout }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.failure }}</td>
+                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.typeunsupported }}</td>
+                                                        </tr>
                                                     {% endfor %}
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
+                                
+                               
                                 <div class="accordion-item bg-transparent">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Resultado da Análise via VirusTotal
+                                           Detecção dos Antivírus
                                         </button>
                                     </h2>
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -176,21 +169,25 @@
                                                 <thead>
                                                     <tr class="text-white">
                                                         <th scope="col">Antivírus</th>
-                                                        <th scope="col">Malicioso</th>
-                                                        <th scope="col">Resultado</th>
+                                                        <th scope="col">Metódo</th>
                                                         <th scope="col">Versão</th>
-                                                        <th scope="col">Código</th>
+                                                        <th scope="col">Data de Update</th>
+                                                        <th scope="col">Nível de Detecção</th>
+                                                        <th scope="col">Resultado</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {% for analise_apk in analises_apk %}
-                                                    <tr>
-                                                        <td>{{ analise_apk.virustotal.av }}</td>
-                                                        <td>{{ analise_apk.virustotal.malicioso }}</td>
-                                                        <td>{{ analise_apk.virustotal.resultado }}</td>
-                                                        <td>{{ analise_apk.virustotal.versao }}</td>           
-                                                        <td>{{ analise_apk.virustotal.cod }}</td>              
-                                                    </tr>
+                                                        {% for antivirus in analise_apk.virustotal.Antivirus %}
+                                                            <tr>
+                                                                <td>{{ antivirus.engine }}</td>
+                                                                <td>{{ antivirus.method }}</td>
+                                                                <td>{{ antivirus.version }}</td>
+                                                                <td>{{ antivirus.update }}</td>
+                                                                <td>{{ antivirus.category }}</td>
+                                                                <td>{{ antivirus.result }}</td>
+                                                            </tr>
+                                                        {% endfor %}
                                                     {% endfor %}
                                                 </tbody>
                                             </table>
@@ -200,28 +197,123 @@
                                 <div class="accordion-item bg-transparent">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Outras Análises
+                                            Detecção de Conexões de Redes
                                         </button>
                                     </h2>
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body table-responsive">
-                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                            <table id="tabela-redes" class="table text-start align-middle table-bordered table-hover mb-0">
                                                 <thead>
                                                     <tr class="text-white">
-                                                        <th scope="col">Arquitetura</th>
-                                                        <th scope="col">Magic Header</th>
-                                                        <th scope="col">Pode Criar Pasta?</th>
-                                                        <th scope="col">Pode Alterar Kernel?</th>
+                                                        <th scope="col">IP</th>
+                                                        <th scope="col">Porta</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {% for analise_apk in analises_apk %}
-                                                    <tr>
-                                                        <td>{{ analise_apk.outros.arquitetura }}</td>
-                                                        <td>{{ analise_apk.outros.magicheader }}</td>
-                                                        <td>{{ analise_apk.outros.criar_pasta }}</td>
-                                                        <td>{{ analise_apk.outros.alterar_kernel }}</td>           
+                                                        {% for rede in analise_apk.virustotal.Redes %}
+                                                            <tr>
+                                                                <td>{{ rede.ip }}</td>
+                                                                <td>{{ rede.porta }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-transparent">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Hashs e Tamanho
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body table-responsive">
+                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                <tbody>
+                                                    {% for analise_apk in analises_apk %}
+                                                        {% for hash_estatica in analise_apk.virustotal.Hashs %}
+                                                            <tr class="text-white">
+                                                                <th scope="row">MD5</th>
+                                                                <td>{{ hash_estatica.md5 }}</td>
+                                                            </tr>
+                                                            <tr class="text-white">
+                                                                <th scope="row">SHA-1</th>
+                                                                <td>{{ hash_estatica.sha1 }}</td>
+                                                            </tr>
+                                                            <tr class="text-white">
+                                                                <th scope="row">SHA-256</th>
+                                                                <td>{{ hash_estatica.sha256 }}</td>
+                                                            </tr>
+                                                            <tr class="text-white">
+                                                                <th scope="row">Tamanho do Arquivo (Bytes)</th>
+                                                                <td>{{ hash_estatica.size }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item bg-transparent">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                            Permissões
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body table-responsive">
+                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                <thead>
+                                                    <tr class="text-white">
+                                                        <th scope="col">Nome da Permissão</th>
+                                                        <th scope="col">Periculosidade</th>
+                                                        <th scope="col">Descrição (English)</th>
+                                                
                                                     </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for analise_apk in analises_apk %}
+                                                        {% for permissions in analise_apk.androguard.perms %}
+                                                            <tr>
+                                                                <td>{{ permissions.permission }}</td>
+                                                                <td>{{ permissions.permission_type }}</td>
+                                                                <td>{{ permissions.short_description }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-transparent">
+                                    <h2 class="accordion-header" id="headingFive">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                            Strings de URL's
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body table-responsive">
+                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                <thead>
+                                                    <tr class="text-white">
+                                                        <th scope="col">Urls/Strings</th>                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for analise_apk in analises_apk %}
+                                                        {% for strings in analise_apk.androguard.urls %}
+                                                            <tr>
+                                                                <td>{{ strings.url }}</td>
+                                                            </tr>
+                                                        {% endfor %}
                                                     {% endfor %}
                                                 </tbody>
                                             </table>

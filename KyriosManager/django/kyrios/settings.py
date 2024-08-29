@@ -27,31 +27,21 @@ LOGIN_URL = os.getenv('LOGIN_URL')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
  
-DEBUG = os.getenv('DEBUG')
+DEBUG = True
 
 RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY')
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
-
-API_VT_KEY = os.getenv('API_VT_KEY')
-
-# ==================================================================================================================
-
-
-""" CONFIGURAÇÕES DO DOMÍNIO DE EMAILS PELO MAILTRAP """
-
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '9883bedc50c941'
-EMAIL_HOST_PASSWORD = os.getenv('MAILTRAP_PASSWORD')
-EMAIL_PORT = os.getenv('MAILTRAP_PORT')
-
 
 # ==================================================================================================================
 
 
 """ PRÁTICAS DE SEGURANÇA """
 
-ALLOWED_HOSTS = ['127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['127.0.0.1']
+ALLOWED_HOSTS = ['analisador.cloud','www.analisador.cloud','127.0.0.1', '10.0.0.11']
+CSRF_TRUSTED_ORIGINS = ['https://analisador.cloud', 'https://www.analisador.cloud', 'http://10.0.0.11']
+
+#ALLOWED_HOSTS = ['analisador.cloud','www.analisador.cloud','127.0.0.1']
+#CSRF_TRUSTED_ORIGINS = ['https://analisador.cloud', 'https://www.analisador.cloud']
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
@@ -108,16 +98,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kyrios.wsgi.application'
 
 
-
 # ==================================================================================================================
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), # Você pode alterar o nome do arquivo de banco de dados se desejar
-    }
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': os.getenv('DB_NAME'),
+         'USER': os.getenv('DB_USER'),
+         'PASSWORD': os.getenv('DB_PASSWORD'),
+         'HOST': 'localhost',
+         'PORT': os.getenv('DB_PORT'),
+     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), # Você pode alterar o nome do arquivo de banco de dados se desejar
+#    }
+#}
 
 
 # ==================================================================================================================
@@ -229,3 +229,6 @@ LOGGING = {
         }
     }
 }
+
+
+# ==================================================================================================================

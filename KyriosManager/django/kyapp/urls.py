@@ -2,7 +2,7 @@
 
 
 from django.urls import path
-from . import views
+from . import views, security
 
 
 # ==================================================================================================================
@@ -16,8 +16,6 @@ urlpatterns = [
     # ====================================================
     
     path('home', views.home, name="home"),
-    path('blank', views.blank, name="blank"),
-    path('chart', views.chart, name="chart"),    
     path('table', views.table, name="table"),
 
     # ====================================================
@@ -30,7 +28,6 @@ urlpatterns = [
     path('ativacao/', views.ativar_email, name='ativacao'),
     path('reenviar/', views.reenvio_confirmacao, name='reenvio'),
 ]
-
 
 
 # ==================================================================================================================
