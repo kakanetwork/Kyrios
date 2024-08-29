@@ -212,13 +212,15 @@ se, os APKs processados serão armazenados em um banco de dados dedicado, transf
       <details>
         <summary><h4>SPRINT 5 - DATA (29/08/2024)</h4></summary>
         <p align="left">
-          <strong>5.1 - Implementar métodos para a análise estática de arquivos APK</strong><br>
-          <strong>5.2 - Integrar as YARA Rules para detecção de padrões de malware</strong><br>
+          <strong>Implementar métodos para a análise estática de arquivos APK</strong><br>
+          <strong>Validação de Login com Email e Banco de Dados devlopment Extra feature</strong><br>
+          <strong>Agregar API do VirusTotal ao projeto</strong><br>
         </p>
       </details>
       <details>
         <summary><h4>SPRINT 6 - DATA (05/09/2024)</h4></summary>
         <p align="left">
+          <strong>Agregar Análise Dinâmica</strong><br>
           <strong>6.1 - Testar e validar a integração entre as diferentes camadas da aplicação</strong><br>
           <strong>6.2 - Realização de uma massa de testes com Malwares reais e analisar os resultados fornecidos pela plataforma</strong><br>
           <strong>6.3 - Finalizar a documentação da plataforma</strong><br>
@@ -260,11 +262,11 @@ https://github.com/user-attachments/assets/d3bd572d-44c9-493b-8505-7263ddb8faae
 - [x] Configuração dos Servidores Web
 - [x] Configuração do DNS e Domínio
 - [x] Criação do Banco de dados e Configuração Básica
-- [ ] Validação do Backend para enviar os dados
-- [ ] Protótipo da Análise Dinâmica
-- [ ] Desenvolver a estrutura do Frontend
-- [ ] Integrar novas ferramentas para análise
-- [ ] Implementação de métodos para Análises Estáticas
+- [x] Validação do Backend para enviar os dados
+- [x] Protótipo da Análise Dinâmica
+- [x] Desenvolver a estrutura do Frontend
+- [x] Integrar novas ferramentas para análise
+- [x] Implementação de métodos para Análises Estáticas
 - [ ] Implementação das Regras YARA
 - [ ] Testar e Validar a plataforma
 - [ ] Realizar a documentação da Plataforma
