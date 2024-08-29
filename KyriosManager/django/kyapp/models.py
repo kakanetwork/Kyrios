@@ -44,3 +44,65 @@ class CustomUser(AbstractUser):
 
 # ==================================================================================================================
 
+class AnaliseAPK(models.Model):
+    """
+    Modelo para armazenar informações sobre análises de arquivos APK.
+
+    Campos:
+        usuario: Relacionamento com o modelo CustomUser.
+        id_json: ID JSON único para o registro da análise.
+        nome: Nome do arquivo APK.
+        ext: Extensão do arquivo APK.
+        data: Data da análise.
+        status: Status da análise (padrão: 'Analisado').
+        tempo: Tempo gasto no download e envio do arquivo.
+        virustotal: Dados relacionados ao resultado da análise no VirusTotal.
+        androguard: Dados relacionados ao resultado da análise no AndroGuard.
+        estatica: Dados relacionados à análise estática do APK.
+        outros: Outros dados gerais da análise.
+    """
+
+    # Relacionamento com o modelo CustomUser
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  
+    # Campo para o ID JSON único
+    id_json = models.CharField(max_length=20, unique=True)  
+    # Campo para o nome do arquivo
+    nome = models.CharField(max_length=255)  
+    # Campo para a extensão do arquivo
+    ext = models.CharField(max_length=10)  
+    # Campo para a data da análise
+    data = models.DateField(default=timezone.now)   
+    # Campo para o status da análise
+    status = models.CharField(max_length=20, default='Analisado')  
+    # Campo para o tempo de download e envio
+    tempo = models.TextField()  
+
+    # Campo para itens detectados
+    virustotal = models.JSONField(default=dict)
+    androguard = models.JSONField(default=dict)
+    estatica = models.JSONField(default=dict)
+    outros = models.JSONField(default=dict)
+    
+    def save(self, *args, **kwargs):
+        """
+        Sobrescreve o método save para gerar automaticamente o ID JSON.
+        """
+        # Verifica se o ID JSON já está definido
+        if not self.id_json:
+
+            # Obtém o último objeto no banco de dados
+            ultimo_objeto = AnaliseAPK.objects.order_by('-id').first()
+            if ultimo_objeto:
+
+                # Extrai o número do último ID JSON e gera um novo ID incrementado
+                ultimo_id = ultimo_objeto.id_json.split('-')[-1]
+                novo_id = int(ultimo_id) + 1
+                self.id_json = f'APK-{novo_id:04d}'  # Formato APK-XXXX
+
+            else:
+                self.id_json = 'APK-0001'  # Se for o primeiro objeto
+
+        super().save(*args, **kwargs)  # Chama o método save da superclasse
+
+
+# ==================================================================================================================
