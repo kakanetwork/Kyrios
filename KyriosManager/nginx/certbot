@@ -1,0 +1,39 @@
+
+# Comando realizado para a criação do Certificado SSL utilizando o CertBot
+certbot --nginx --redirect -d www.analisador.cloud -d analisador.cloud -m EXAMPLE@gmail.com --agree-tos
+
+# Comando realizado para a renovação do Certificado SSL utilizando o CertBot
+
+# /etc/systemd/system/snap.certbot.renew.timer
+[Unit]
+# Auto-generated, DO NOT EDIT
+Description=Timer renew for snap application certbot.renew
+Requires=snap-certbot-3700.mount
+After=snap-certbot-3700.mount
+X-Snappy=yes
+
+[Timer]
+Unit=snap.certbot.renew.service
+OnCalendar=*-*-* 10:51
+OnCalendar=*-*-* 16:01
+
+[Install]
+WantedBy=timers.target
+
+# /etc/systemd/system/snap.certbot.renew.service
+[Unit]
+# Auto-generated, DO NOT EDIT
+Description=Service for snap application certbot.renew
+Requires=snap-certbot-3700.mount
+Wants=network.target
+After=snap-certbot-3700.mount network.target snapd.apparmor.service
+X-Snappy=yes
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/bin/snap run --timer="00:00~24:00/2" certbot.renew
+SyslogIdentifier=certbot.renew
+Restart=no
+WorkingDirectory=/var/snap/certbot/3700
+TimeoutStopSec=30
+Type=oneshot

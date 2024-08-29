@@ -1,0 +1,40 @@
+[Unit]
+Description=Gunicorn para o Projeto Kyrios
+
+# Executar após a inicialização da rede
+After=network.target
+
+[Service]
+
+# Tipo de notificação usado pelo serviço
+Type=notify
+
+# Usuário sob o qual o serviço será executado
+User=django
+# Grupo do usuário sob o qual o serviço será executado
+Group=django
+
+# Diretório para armazenamento de dados em tempo de execução
+RuntimeDirectory=kyrios
+
+# Diretório de trabalho do serviço
+WorkingDirectory=/srv/djangoproj/django
+
+# Comando para iniciar o serviço Gunicorn com algumas opções
+ExecStart=/srv/djangoproj/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 kyrios.wsgi
+
+# Comando para recarregar o serviço
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# Modo de encerramento do serviço
+KillMode=mixed
+
+# Tempo máximo para parar o serviço antes do encerramento forçado
+TimeoutStopSec=5
+
+# Indica se deve ser criado um diretório temporário privado para o serviço
+PrivateTmp=true
+
+[Install]
+# O serviço deve ser iniciado durante a inicialização do sistema multiusuário
+WantedBy=multi-user.target
