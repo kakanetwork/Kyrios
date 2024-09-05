@@ -28,6 +28,17 @@
 
     <!-- Template Stylesheet -->
     <link href="/static/css/style.css" rel="stylesheet">
+
+    <style>
+        /* Garante que todo o conteúdo das células fique em uma única linha */
+        #tabela-analises th, #tabela-analises td {
+            white-space: nowrap;
+        }
+
+        #tabela-analises2 th, #tabela-analises2 td {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -114,209 +125,586 @@
                                 </a>
                             <h6 class="mb-0">Analise Detalhada</h6>
                             </div>
+                            <!-- ANALISES ABAIXO  -->
                             <div class="accordion" id="accordionExample">
+                                <div class="accordion-item bg-transparent">
+                                    <h2 class="accordion-header" id="headky">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ky" aria-expanded="false" aria-controls="ky">
+                                            Análise Estática - Kyrios
+                                        </button>
+                                    </h2>
+                                    <div id="ky" class="accordion-collapse collapse" aria-labelledby="headky" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body table-responsive">
+                                                                                       
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Informações Gerais
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#ky">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Nome do Pacote</th>
+                                                                        <td>{{ analise_apk.estatica.NomePacote }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Atividade Principal</th>
+                                                                        <td>{{ analise_apk.estatica.atv_principal }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Arquiteturas / ABIS</th>
+                                                                        <td>{{ analise_apk.estatica.ABIS | join:", " }}</td>
+                                                                    </tr>
+                                                                    {% for hash_estatica in analise_apk.estatica.Hashs %}
+                                                                        <tr class="text-white">
+                                                                            <th scope="row">MD5</th>
+                                                                            <td>{{ hash_estatica.md5 }}</td>
+                                                                        </tr>
+                                                                        <tr class="text-white">
+                                                                            <th scope="row">SHA-1</th>
+                                                                            <td>{{ hash_estatica.sha1 }}</td>
+                                                                        </tr>
+                                                                        <tr class="text-white">
+                                                                            <th scope="row">SHA-256</th>
+                                                                            <td>{{ hash_estatica.sha256 }}</td>
+                                                                        </tr>
+                                                                        <tr class="text-white">
+                                                                            <th scope="row">Tamanho do Arquivo (Bytes)</th>
+                                                                            <td>{{ hash_estatica.size }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                            
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headurlone">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#urlone" aria-expanded="false" aria-controls="urlone">
+                                                        Urls e Domínios
+                                                    </button>
+                                                </h2>
+                                                <div id="urlone" class="accordion-collapse collapse" aria-labelledby="headurlone" data-bs-parent="#ky">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">URLs</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    {% for url in analise_apk.estatica.urls %}
+                                                                        <tr>
+                                                                            <td>{{ url }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headurltwo">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#urltwo" aria-expanded="false" aria-controls="urltwo">
+                                                        Detalhes dos Domínios
+                                                    </button>
+                                                </h2>
+                                                <div id="urltwo" class="accordion-collapse collapse" aria-labelledby="headurltwo" data-bs-parent="#ky">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Nome de Domínio</th>
+                                                                    <th scope="col">Registrador</th>
+                                                                    <th scope="col">Data de Criação</th>
+                                                                    <th scope="col">Data de Expiração</th>
+                                                                    <th scope="col">Name Servers</th>
+                                                                    <th scope="col">Emais</th>
+                                                                    <th scope="col">Endereço</th>
+                                                                    <th scope="col">Cidade</th>
+                                                                    <th scope="col">Estado</th>
+                                                                    <th scope="col">País</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    {% for info_url in analise_apk.estatica.info_urls %}
+                                                                        <tr>
+                                                                            <td>{{ info_url.domain_name }}</td>
+                                                                            <td>{{ info_url.registrar }}</td>
+                                                                            <td>{{ info_url.creation_date }}</td>
+                                                                            <td>{{ info_url.expiration_date }}</td>
+                                                                            <td>{{ info_url.name_servers }}</td>
+                                                                            <td>{{ info_url.emails }}</td>
+                                                                            <td>{{ info_url.address }}</td>
+                                                                            <td>{{ info_url.city }}</td>
+                                                                            <td>{{ info_url.state }}</td>
+                                                                            <td>{{ info_url.country }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button" type="button" aria-expanded="True">
-                                            Resumo das Detecções
-                                        </button>
-                                    </h2>
-                                    <div class="accordion-collapse collapse show">
-                                        <div class="accordion-body table-responsive">
-                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                <thead>
-                                                    <tr class="text-white">
-                                                        <th scope="col">Malicioso</th>
-                                                        <th scope="col">Suspeito</th>
-                                                        <th scope="col">Não Detectado</th>
-                                                        <th scope="col">Inofensivo</th>
-                                                        <th scope="col">Sem Respostas</th>
-                                                        <th scope="col">Timeout</th>
-                                                        <th scope="col">Falhou</th>
-                                                        <th scope="col">Tipo não suportado</th>  
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for analise_apk in analises_apk %}
-                                                        <tr>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.malicious }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.suspicious }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.undetected }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.harmless }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.timeout }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.confirmedtimeout }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.failure }}</td>
-                                                            <td>{{ analise_apk.virustotal.AntivirusClassificacao.typeunsupported }}</td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                               
-                                <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                           Detecção dos Antivírus
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body table-responsive">
-                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                <thead>
-                                                    <tr class="text-white">
-                                                        <th scope="col">Antivírus</th>
-                                                        <th scope="col">Metódo</th>
-                                                        <th scope="col">Versão</th>
-                                                        <th scope="col">Data de Update</th>
-                                                        <th scope="col">Nível de Detecção</th>
-                                                        <th scope="col">Resultado</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for analise_apk in analises_apk %}
-                                                        {% for antivirus in analise_apk.virustotal.Antivirus %}
-                                                            <tr>
-                                                                <td>{{ antivirus.engine }}</td>
-                                                                <td>{{ antivirus.method }}</td>
-                                                                <td>{{ antivirus.version }}</td>
-                                                                <td>{{ antivirus.update }}</td>
-                                                                <td>{{ antivirus.category }}</td>
-                                                                <td>{{ antivirus.result }}</td>
-                                                            </tr>
-                                                        {% endfor %}
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Detecção de Conexões de Redes
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body table-responsive">
-                                            <table id="tabela-redes" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                <thead>
-                                                    <tr class="text-white">
-                                                        <th scope="col">IP</th>
-                                                        <th scope="col">Porta</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for analise_apk in analises_apk %}
-                                                        {% for rede in analise_apk.virustotal.Redes %}
-                                                            <tr>
-                                                                <td>{{ rede.ip }}</td>
-                                                                <td>{{ rede.porta }}</td>
-                                                            </tr>
-                                                        {% endfor %}
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Hashs e Tamanho
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body table-responsive">
-                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                <tbody>
-                                                    {% for analise_apk in analises_apk %}
-                                                        {% for hash_estatica in analise_apk.virustotal.Hashs %}
-                                                            <tr class="text-white">
-                                                                <th scope="row">MD5</th>
-                                                                <td>{{ hash_estatica.md5 }}</td>
-                                                            </tr>
-                                                            <tr class="text-white">
-                                                                <th scope="row">SHA-1</th>
-                                                                <td>{{ hash_estatica.sha1 }}</td>
-                                                            </tr>
-                                                            <tr class="text-white">
-                                                                <th scope="row">SHA-256</th>
-                                                                <td>{{ hash_estatica.sha256 }}</td>
-                                                            </tr>
-                                                            <tr class="text-white">
-                                                                <th scope="row">Tamanho do Arquivo (Bytes)</th>
-                                                                <td>{{ hash_estatica.size }}</td>
-                                                            </tr>
-                                                        {% endfor %}
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headpermsdetails">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#permsdetails" aria-expanded="false" aria-controls="permsdetails">
+                                                        Permissões Padrão
+                                                    </button>
+                                                </h2>
+                                                <div id="permsdetails" class="accordion-collapse collapse" aria-labelledby="headpermsdetails" data-bs-parent="#ky">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Nome da Permissão</th>
+                                                                    <th scope="col">Nível da Permissão</th>
+                                                                    <th scope="col">Valor da Constante</th>
+                                                                    <th scope="col">Descritivo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    {% for perms in analise_apk.estatica.perms_detalhadas %}
+                                                                        <tr>
+                                                                            <td>{{ perms.name }}</td>
+                                                                            <td>{{ perms.protection_level }}</td>
+                                                                            <td>{{ perms.constant_value }}</td>
+                                                                            <td>{{ perms.description }}</td>                                                                
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headingFour">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                            Permissões
-                                        </button>
-                                    </h2>
-
-                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body table-responsive">
-                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                <thead>
-                                                    <tr class="text-white">
-                                                        <th scope="col">Nome da Permissão</th>
-                                                        <th scope="col">Periculosidade</th>
-                                                        <th scope="col">Descrição (English)</th>
-                                                
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for analise_apk in analises_apk %}
-                                                        {% for permissions in analise_apk.androguard.perms %}
-                                                            <tr>
-                                                                <td>{{ permissions.permission }}</td>
-                                                                <td>{{ permissions.permission_type }}</td>
-                                                                <td>{{ permissions.short_description }}</td>
-                                                            </tr>
-                                                        {% endfor %}
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headpermsdeclarada">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#permsdeclarada" aria-expanded="false" aria-controls="permsdeclarada">
+                                                        Permissões Declaradas
+                                                    </button>
+                                                </h2>
+                                                <div id="permsdeclarada" class="accordion-collapse collapse" aria-labelledby="headpermsdeclarada" data-bs-parent="#ky">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Nome das Permissões Declaradas</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    {% for perms in analise_apk.estatica.perms_declaradas %}
+                                                                        <tr>
+                                                                            <td>{{ perms }}</td>                                                          
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headsrvatv">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#srvatv" aria-expanded="false" aria-controls="srvatv">
+                                                        Atividades e Serviços
+                                                    </button>
+                                                </h2>
+                                                <div id="srvatv" class="accordion-collapse collapse" aria-labelledby="headsrvatv" data-bs-parent="#ky">
+                                                    <div class="accordion-body table-responsive">
+                                                        <div class="tables-container">
+                                                            <table id="tabela-analises-atividades" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                                <thead>
+                                                                    <tr class="text-white">
+                                                                        <th scope="col">Nome das Atividades da Aplicação</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for analise_apk in analises_apk %}
+                                                                        {% for atvs in analise_apk.estatica.todas_atv %}
+                                                                            <tr>
+                                                                                <td>{{ atvs }}</td>
+                                                                            </tr>
+                                                                        {% endfor %}
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                            <table id="tabela-analises-servicos" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                                <thead>
+                                                                    <tr class="text-white">
+                                                                        <th scope="col">Nome dos Serviços da Aplicação</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for analise_apk in analises_apk %}
+                                                                        {% for srvs in analise_apk.estatica.todos_srv %}
+                                                                            <tr>
+                                                                                <td>{{ srvs }}</td>
+                                                                            </tr>
+                                                                        {% endfor %}
+                                                                    {% endfor %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <style>
+                                                        .tables-container {
+                                                            display: flex;
+                                                            justify-content: space-between;
+                                                        }
+                                                        
+                                                        .tables-container table {
+                                                            width: 48%; /* Ajuste a largura conforme necessário */
+                                                        }
+                                                    </style>
+                                                    
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="accordion" id="accordionExample">
                                 <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headingFive">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                            Strings de URL's
+                                    <h2 class="accordion-header" id="headvirustotal">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vt" aria-expanded="false" aria-controls="vt">
+                                           Análise Estática - VirusTotal
                                         </button>
                                     </h2>
-
-                                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                    <div id="vt" class="accordion-collapse collapse" aria-labelledby="vt">
                                         <div class="accordion-body table-responsive">
-                                            <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                <thead>
-                                                    <tr class="text-white">
-                                                        <th scope="col">Urls/Strings</th>                                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% for analise_apk in analises_apk %}
-                                                        {% for strings in analise_apk.androguard.urls %}
-                                                            <tr>
-                                                                <td>{{ strings.url }}</td>
-                                                            </tr>
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headresumedet">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumedet" aria-expanded="false" aria-controls="resumedet">
+                                                    Resumo das Detecções
+                                                    </button>
+                                                </h2>
+                                                <div id="resumedet" class="accordion-collapse collapse" aria-labelledby="resumedet" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Malicioso</th>
+                                                                    <th scope="col">Suspeito</th>
+                                                                    <th scope="col">Não Detectado</th>
+                                                                    <th scope="col">Inofensivo</th>
+                                                                    <th scope="col">Sem Respostas</th>
+                                                                    <th scope="col">Timeout</th>
+                                                                    <th scope="col">Falhou</th>
+                                                                    <th scope="col">Tipo não suportado</th>  
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    <tr>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.malicious }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.suspicious }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.undetected }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.harmless }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.timeout }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.confirmedtimeout }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.failure }}</td>
+                                                                        <td>{{ analise_apk.virustotal.AntivirusClassificacao.typeunsupported }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+ 
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headingTwo">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Detecção dos Antivírus
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Antivírus</th>
+                                                                    <th scope="col">Metódo</th>
+                                                                    <th scope="col">Versão</th>
+                                                                    <th scope="col">Data de Update</th>
+                                                                    <th scope="col">Nível de Detecção</th>
+                                                                    <th scope="col">Resultado</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    {% for antivirus in analise_apk.virustotal.Antivirus %}
+                                                                        <tr>
+                                                                            <td>{{ antivirus.engine }}</td>
+                                                                            <td>{{ antivirus.method }}</td>
+                                                                            <td>{{ antivirus.version }}</td>
+                                                                            <td>{{ antivirus.update }}</td>
+                                                                            <td>{{ antivirus.category }}</td>
+                                                                            <td>{{ antivirus.result }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>                                                                              
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headingThree">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        Detecção de Conexões de Redes
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-redes" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">IP</th>
+                                                                    <th scope="col">Porta</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise_apk in analises_apk %}
+                                                                    {% for rede in analise_apk.virustotal.Redes %}
+                                                                        <tr>
+                                                                            <td>{{ rede.ip }}</td>
+                                                                            <td>{{ rede.porta }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item bg-transparent">
+                                    <h2 class="accordion-header" id="headad">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ad" aria-expanded="false" aria-controls="ad">
+                                            Análise Dinâmica - Kyrios
+                                        </button>
+                                    </h2>
+                                    <div id="ad" class="accordion-collapse collapse" aria-labelledby="ad" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body table-responsive">
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headinfoad">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#infoad" aria-expanded="false" aria-controls="infoad">
+                                                        Informações de Execução e Aplicação
+                                                    </button>
+                                                </h2>
+                                                <div id="infoad" class="accordion-collapse collapse" aria-labelledby="headinfoad" data-bs-parent="#ad">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <tbody>
+                                                                {% for analise in analises_apk %}
+                                                                        <!-- Dados de AD -->
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">ID do Usuário do APK</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.userId }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">GID do Usuário</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.gid }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Pasta do Código Fonte</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.codePath }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Pasta dos Recursos</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.resourcePath }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Pasta de Dados</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.dataDir }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Arquitetura da CPU Principal</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.primaryCpuAbi }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Outras Arquiteturas suportadas</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.secondaryCpuAbi }}</td>
+                                                                    </tr>
+                                                                    <!-- Informações de versão -->
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Versão do Código</th>
+                                                                        <td>v{{ analise.dinamica.dumpsys.informacoes_versao.versionCode }}.0</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Versão Mínima do SDK</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.informacoes_versao.minSdk }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Versão Alvo do SDK</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.informacoes_versao.targetSdk }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Foi Instalado</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.execucao.instalado }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Está Oculto</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.execucao.oculto }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Foi Suspenso Forçadamente</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.execucao.suspenso }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Foi Parado Forçadamente</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.execucao.parado }}</td>
+                                                                    </tr>
+                                                                    <tr class="text-white">
+                                                                        <th scope="row">Foi Executado sem Permissão</th>
+                                                                        <td>{{ analise.dinamica.dumpsys.execucao.instantaneo }}</td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headpermsad">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#permsad" aria-expanded="false" aria-controls="permsad">
+                                                        Detecção de Permissões utilizadas na Instalação
+                                                    </button>
+                                                </h2>
+                                                <div id="permsad" class="accordion-collapse collapse" aria-labelledby="headpermsad" data-bs-parent="#ad">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Nome da Permissão</th>
+                                                                    <th scope="col">Permissão foi utilizada</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise in analises_apk %}
+                                                                    {% for perm, bool in analise.dinamica.dumpsys.permissoes_instalacao.items %}
+                                                                        <tr>
+                                                                            <td>{{ perm }}</td>
+                                                                            <td>{{ bool }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                            
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headarqsmod">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#arqsmod" aria-expanded="false" aria-controls="arqsmod">
+                                                        Detecção de Arquivos Criados
+                                                    </button>
+                                                </h2>
+                                                <div id="arqsmod" class="accordion-collapse collapse" aria-labelledby="headarqsmod" data-bs-parent="#ad">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">Local Absoluto do Arquivo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise in analises_apk %}
+                                                                    {% for arquivo in analise.dinamica.arquivos %}
+                                                                        <tr>
+                                                                            <td>{{ arquivo }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                            
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headlog2">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#log2" aria-expanded="false" aria-controls="log2">
+                                                        Detecção de Rede - Arquivo PCAP
+                                                    </button>
+                                                </h2>
+                                                <div id="log2" class="accordion-collapse collapse" aria-labelledby="headlog2" data-bs-parent="#ad">
+                                                    <div class="accordion-body">
+                                                        {% for analise in analises_apk %}
+                                                            {% if analise.dinamica.upload_url %}
+                                                                <a href="{% url 'baixar_pcap' analise.dinamica.upload_url %}" class="btn btn-primary">Baixar Arquivo PCAP - Análise da Rede</a>
+                                                            {% else %}
+                                                                <p>Nenhum arquivo disponível para download.</p>
+                                                            {% endif %}
                                                         {% endfor %}
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item bg-transparent">
+                                                <h2 class="accordion-header" id="headlogsad">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#logsad" aria-expanded="false" aria-controls="logsad">
+                                                        Detecção de Logs
+                                                    </button>
+                                                </h2>
+                                                <div id="logsad" class="accordion-collapse collapse" aria-labelledby="headlogsad" data-bs-parent="#ad">
+                                                    <div class="accordion-body table-responsive">
+                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                            <thead>
+                                                                <tr class="text-white">
+                                                                    <th scope="col">N°</th>
+                                                                    <th scope="col">Mensagem do Log</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for analise in analises_apk %}
+                                                                    {% for linha, log in analise.dinamica.logs.items %}
+                                                                        <tr>
+                                                                            <td>{{ linha }}</td>
+                                                                            <td>{{ log }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            </tbody>
+                                                            
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -393,7 +781,7 @@
                 <div class="bg-secondary p-4 footer-shadow">
                     <div class="row ">
                         <div class="col-12 col-sm-6 text-center text-sm-start ">
-                            &copy; <a href="#">Kyrios</a>, Open Source.
+                            &copy; <a href="#">Kyrios</a>, Open Source - <a href="https://github.com/kakanetwork/kyrios">Código Fonte</a>.
                         </div>
                     </div>
                 </div>

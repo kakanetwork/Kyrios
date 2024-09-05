@@ -166,11 +166,17 @@
                             </div>
 
                             <!-- Toggle switch -->
-
+                            <style>
+                            .doacao-link {
+                                color: #007bff;
+                                text-decoration: underline;
+                            }
+                            </style>
+                            
                             {% if messages %}
                                 {% for message in messages %}
-                                    <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% endif %} alert-dismissible fade show" style="font-size: 12px; text-align: center;" role="alert">
-                                        <b><i class="fa fa-exclamation-circle me-2"></i>{{ message }}</b> 
+                                    <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-danger{% elif message.tags == 'warning' %}alert-warning{% endif %} alert-dismissible fade show" style="font-size: 12px; text-align: center;" role="alert">
+                                        <b><i class="fa fa-exclamation-circle me-2"></i>{{ message|safe }}</b> 
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                 {% endfor %}
@@ -187,7 +193,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Análises Recentes (10)</h6>
+                        <h6 class="mb-0">Análises Recentes (Máx: 10)</h6>
                         <a href="{% url 'table' %}">Mostrar Todas</a>
                     </div>
                     
@@ -253,7 +259,7 @@
                 <div class="bg-secondary p-4 footer-shadow">
                     <div class="row ">
                         <div class="col-12 col-sm-6 text-center text-sm-start ">
-                            &copy; <a href="#">Kyrios</a>, Open Source.
+                            &copy; <a href="#">Kyrios</a>, Open Source - <a href="https://github.com/kakanetwork/kyrios">Código Fonte</a>.
                         </div>
                     </div>
                 </div>

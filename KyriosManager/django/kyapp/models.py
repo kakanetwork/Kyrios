@@ -44,6 +44,7 @@ class CustomUser(AbstractUser):
 
 # ==================================================================================================================
 
+
 class AnaliseAPK(models.Model):
     """
     Modelo para armazenar informações sobre análises de arquivos APK.
@@ -57,9 +58,8 @@ class AnaliseAPK(models.Model):
         status: Status da análise (padrão: 'Analisado').
         tempo: Tempo gasto no download e envio do arquivo.
         virustotal: Dados relacionados ao resultado da análise no VirusTotal.
-        androguard: Dados relacionados ao resultado da análise no AndroGuard.
         estatica: Dados relacionados à análise estática do APK.
-        outros: Outros dados gerais da análise.
+        dinamica: Outros dados gerais da análise dinamica.
     """
 
     # Relacionamento com o modelo CustomUser
@@ -79,9 +79,8 @@ class AnaliseAPK(models.Model):
 
     # Campo para itens detectados
     virustotal = models.JSONField(default=dict)
-    androguard = models.JSONField(default=dict)
     estatica = models.JSONField(default=dict)
-    outros = models.JSONField(default=dict)
+    dinamica = models.JSONField(default=dict)
     
     def save(self, *args, **kwargs):
         """

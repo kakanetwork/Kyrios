@@ -1,0 +1,1928 @@
+[
+    {
+        "name": "ACCEPT_HANDOVER",
+        "description": "Permite que um aplicativo de chamada continue uma chamada que foi iniciada em outro aplicativo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCEPT_HANDOVER"
+    },
+    {
+        "name": "ACCESS_BACKGROUND_LOCATION",
+        "description": "Permite que um aplicativo acesse a localizacao em segundo plano.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCESS_BACKGROUND_LOCATION"
+    },
+    {
+        "name": "ACCESS_BLOBS_ACROSS_USERS",
+        "description": "Permite que um aplicativo acesse blobs de dados entre usuarios.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCESS_BLOBS_ACROSS_USERS"
+    },
+    {
+        "name": "ACCESS_FINE_LOCATION",
+        "description": "Permite que um aplicativo acesse a localizacao precisa",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCESS_FINE_LOCATION"
+    },
+    {
+        "name": "ACCESS_HIDDEN_PROFILES",
+        "description": "Permite que aplicativos acessem perfis com a propriedade de usuario android.content.pm.UserProperties.PROFILE_API_VISIBILITY_HIDDEN",
+        "protection_level": "normal",
+        "constant_value": "android.permission.ACCESS_HIDDEN_PROFILES"
+    },
+    {
+        "name": "ACCESS_LOCATION_EXTRA_COMMANDS",
+        "description": "Permite que um aplicativo acesse comandos extras do provedor de localizacao.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"
+    },
+    {
+        "name": "ACCESS_MEDIA_LOCATION",
+        "description": "Permite que um aplicativo acesse quaisquer localizacoes geograficas persistidas na colecao compartilhada do usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCESS_MEDIA_LOCATION"
+    },
+    {
+        "name": "ACCESS_NETWORK_STATE",
+        "description": "Permite que aplicativos acessem informacoes sobre redes.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.ACCESS_NETWORK_STATE"
+    },
+    {
+        "name": "ACCESS_NOTIFICATION_POLICY",
+        "description": "Permissao de marcador para aplicativos que desejam acessar a politica de notificacao. Essa permissao nao e suportada em perfis gerenciados.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.ACCESS_NOTIFICATION_POLICY"
+    },
+    {
+        "name": "ACCESS_WIFI_STATE",
+        "description": "Permite que aplicativos acessem informacoes sobre redes Wi-Fi.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.ACCESS_WIFI_STATE"
+    },
+    {
+        "name": "ACCOUNT_MANAGER",
+        "description": "Permite que aplicativos chamem AccountAuthenticators.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCOUNT_MANAGER"
+    },
+    {
+        "name": "ADD_VOICEMAIL",
+        "description": "Permite que um aplicativo adicione correios de voz ao sistema.",
+        "protection_level": "perigoso",
+        "constant_value": "com.android.voicemail.permission.ADD_VOICEMAIL"
+    },
+    {
+        "name": "ANSWER_PHONE_CALLS",
+        "description": "Permite que o aplicativo atenda uma chamada telefônica recebida.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ANSWER_PHONE_CALLS"
+    },
+    {
+        "name": "BATTERY_STATS",
+        "description": "Permite que um aplicativo colete estatisticas da bateria",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BATTERY_STATS"
+    },
+    {
+        "name": "BIND_ACCESSIBILITY_SERVICE",
+        "description": "Deve ser exigido por um AccessibilityService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_ACCESSIBILITY_SERVICE"
+    },
+    {
+        "name": "BIND_APPWIDGET",
+        "description": "Permite que um aplicativo informe ao servico AppWidget qual aplicativo pode acessar os dados do AppWidget.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_APPWIDGET"
+    },
+    {
+        "name": "BIND_CALL_REDIRECTION_SERVICE",
+        "description": "Deve ser exigido por um CallRedirectionService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_CALL_REDIRECTION_SERVICE"
+    },
+    {
+        "name": "BIND_CARRIER_MESSAGING_CLIENT_SERVICE",
+        "description": "Uma subclasse de CarrierMessagingClientService deve ser protegida com esta permissao.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_CARRIER_MESSAGING_CLIENT_SERVICE"
+    },
+    {
+        "name": "BIND_CHOOSER_TARGET_SERVICE",
+        "description": "Esta constante foi descontinuada. Deve ser exigido por um ChooserTargetService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_CHOOSER_TARGET_SERVICE"
+    },
+    {
+        "name": "BIND_CONTROLS",
+        "description": "Permite que o SystemUI solicite controles de terceiros. Deve ser solicitado apenas pelo Sistema e exigido pelas declaracoes ControlsProviderService.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_CONTROLS"
+    },
+    {
+        "name": "BIND_DEVICE_ADMIN",
+        "description": "Deve ser exigido pelo receptor de administracao do dispositivo, para garantir que somente o sistema possa interagir com ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_DEVICE_ADMIN"
+    },
+    {
+        "name": "BIND_DREAM_SERVICE",
+        "description": "Deve ser exigido por um DreamService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_DREAM_SERVICE"
+    },
+    {
+        "name": "BIND_INCALL_SERVICE",
+        "description": "Deve ser exigido por um InCallService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_INCALL_SERVICE"
+    },
+    {
+        "name": "BIND_INPUT_METHOD",
+        "description": "Deve ser exigido por um InputMethodService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_INPUT_METHOD"
+    },
+    {
+        "name": "BIND_MIDI_DEVICE_SERVICE",
+        "description": "Deve ser exigido por um MidiDeviceService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_MIDI_DEVICE_SERVICE"
+    },
+    {
+        "name": "BIND_NFC_SERVICE",
+        "description": "Deve ser exigido por um HostApduService ou OffHostApduService para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_NFC_SERVICE"
+    },
+    {
+        "name": "BIND_NOTIFICATION_LISTENER_SERVICE",
+        "description": "Deve ser exigido por um NotificationListenerService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+    },
+    {
+        "name": "BIND_PRINT_SERVICE",
+        "description": "Deve ser exigido por um PrintService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_PRINT_SERVICE"
+    },
+    {
+        "name": "BIND_QUICK_ACCESS_WALLET_SERVICE",
+        "description": "Deve ser exigido por um QuickAccessWalletService para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_QUICK_ACCESS_WALLET_SERVICE"
+    },
+    {
+        "name": "BIND_QUICK_SETTINGS_TILE",
+        "description": "Permite que um aplicativo se vincule a blocos de configuracoes rapidas de terceiros. Deve ser solicitado apenas pelo Sistema, deve ser exigido por declaracoes TileService.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_QUICK_SETTINGS_TILE"
+    },
+    {
+        "name": "BIND_SCREENING_SERVICE",
+        "description": "Deve ser exigido por um CallScreeningService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_SCREENING_SERVICE"
+    },
+    {
+        "name": "BIND_TELECOM_CONNECTION_SERVICE",
+        "description": "Deve ser exigido por um ConnectionService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_TELECOM_CONNECTION_SERVICE"
+    },
+    {
+        "name": "BIND_TEXT_SERVICE",
+        "description": "Deve ser exigido por um TextService (por exemplo, SpellCheckerService) para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_TEXT_SERVICE"
+    },
+    {
+        "name": "BIND_TV_INPUT",
+        "description": "Deve ser exigido por um TvInputService para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_TV_INPUT"
+    },
+    {
+        "name": "BIND_TV_INTERACTIVE_APP",
+        "description": "Deve ser exigido por um TvInteractiveAppService para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_TV_INTERACTIVE_APP"
+    },
+    {
+        "name": "BIND_VISUAL_VOICEMAIL_SERVICE",
+        "description": "Deve ser exigido por um link VisualVoicemailService para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_VISUAL_VOICEMAIL_SERVICE"
+    },
+    {
+        "name": "BIND_VOICE_INTERACTION",
+        "description": "Deve ser exigido por um VoiceInteractionService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_VOICE_INTERACTION"
+    },
+    {
+        "name": "BIND_VPN_SERVICE",
+        "description": "Deve ser exigido por um VpnService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_VPN_SERVICE"
+    },
+    {
+        "name": "BIND_VR_LISTENER_SERVICE",
+        "description": "Deve ser exigido por um VrListenerService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_VR_LISTENER_SERVICE"
+    },
+    {
+        "name": "BIND_WALLPAPER",
+        "description": "Deve ser exigido por um WallpaperService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_WALLPAPER"
+    },
+    {
+        "name": "BLUETOOTH",
+        "description": "Permite que aplicativos se conectem a dispositivos Bluetooth pareados.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.BLUETOOTH"
+    },
+    {
+        "name": "BLUETOOTH_ADMIN",
+        "description": "Permite que aplicativos descubram e emparelhem dispositivos Bluetooth.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.BLUETOOTH_ADMIN"
+    },
+    {
+        "name": "BLUETOOTH_ADVERTISE",
+        "description": "Necessario para poder anunciar em dispositivos Bluetooth próximos.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BLUETOOTH_ADVERTISE"
+    },
+    {
+        "name": "BLUETOOTH_CONNECT",
+        "description": "Necessario para poder se conectar a dispositivos Bluetooth pareados.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BLUETOOTH_CONNECT"
+    },
+    {
+        "name": "BLUETOOTH_PRIVILEGED",
+        "description": "Permite que aplicativos emparelhem dispositivos bluetooth sem interacao do usuario e permitam ou nao o acesso a lista telefônica ou as mensagens.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BLUETOOTH_PRIVILEGED"
+    },
+    {
+        "name": "BODY_SENSORS",
+        "description": "Permite que um aplicativo acesse dados de sensores que o usuario usa para medir o que esta acontecendo dentro de seu corpo, como a frequência cardiaca.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BODY_SENSORS"
+    },
+    {
+        "name": "BODY_SENSORS_BACKGROUND",
+        "description": "Permite que um aplicativo acesse dados de sensores que o usuario usa para medir o que esta acontecendo dentro do seu corpo, como frequência cardiaca.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BODY_SENSORS_BACKGROUND"
+    },
+    {
+        "name": "BROADCAST_PACKAGE_REMOVED",
+        "description": "Permite que um aplicativo transmita uma notificacao de que um pacote de aplicativo foi removido.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BROADCAST_PACKAGE_REMOVED"
+    },
+    {
+        "name": "BROADCAST_WAP_PUSH",
+        "description": "Permite que um aplicativo transmita uma notificacao de recebimento WAP PUSH.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BROADCAST_WAP_PUSH"
+    },
+    {
+        "name": "CALL_PHONE",
+        "description": "Permite que um aplicativo inicie uma chamada telefônica sem passar pela interface do usuario do Dialer para que o usuario confirme a chamada. Observacao: um aplicativo que tenha essa permissao tambem pode chamar códigos MMI da operadora para alterar configuracoes como encaminhamento de chamadas ou preferências de chamada em espera.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.CALL_PHONE"
+    },
+    {
+        "name": "CALL_PRIVILEGED",
+        "description": "Permite que um aplicativo ligue para qualquer número de telefone, incluindo números de emergência, sem passar pela interface do usuario do Dialer para que o usuario confirme a ligacao que esta sendo feita. Nao deve ser usado por aplicativos de terceiros.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.CALL_PRIVILEGED"
+    },
+    {
+        "name": "CAPTURE_AUDIO_OUTPUT",
+        "description": "Permite que um aplicativo capture a saida de audio.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.CAPTURE_AUDIO_OUTPUT"
+    },
+    {
+        "name": "CHANGE_NETWORK_STATE",
+        "description": "Permite que os aplicativos alterem o estado de conectividade da rede.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CHANGE_NETWORK_STATE"
+    },
+    {
+        "name": "CHANGE_WIFI_MULTICAST_STATE",
+        "description": "Permite que os aplicativos entrem no modo Wi-Fi Multicast.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+    },
+    {
+        "name": "CHANGE_WIFI_STATE",
+        "description": "Permite que os aplicativos alterem o estado da conectividade Wi-Fi.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CHANGE_WIFI_STATE"
+    },
+    {
+        "name": "CLEAR_APP_CACHE",
+        "description": "Permite que um aplicativo limpe os caches de todos os aplicativos instalados no dispositivo.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.CLEAR_APP_CACHE"
+    },
+    {
+        "name": "CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS",
+        "description": "Permite especificar provedores de credenciais candidatos a serem consultados nos fluxos de obtencao do Credential Manager ou a serem preferidos como padrao nos fluxos de criacao do Credential Manager.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS"
+    },
+    {
+        "name": "CREDENTIAL_MANAGER_SET_ORIGIN",
+        "description": "Permite que um navegador invoque APIs do gerenciador de credenciais em nome de outro RP.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CREDENTIAL_MANAGER_SET_ORIGIN"
+    },
+    {
+        "name": "DELETE_CACHE_FILES",
+        "description": "Permissao antiga para excluir arquivos de cache de um aplicativo, nao mais usada, mas que nos sinaliza para ignorar chamadas silenciosamente em vez de lancar uma excecao.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.DELETE_CACHE_FILES"
+    },
+    {
+        "name": "DETECT_SCREEN_RECORDING",
+        "description": "Permite que um aplicativo seja notificado quando estiver sendo gravado.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.DETECT_SCREEN_RECORDING"
+    },
+    {
+        "name": "EXECUTE_APP_ACTION",
+        "description": "Permite que um aplicativo assistivo execute acoes em nome de usuarios dentro de aplicativos. Por enquanto, essa permissao e concedida apenas ao aplicativo Assistant selecionado pelo usuario.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.EXECUTE_APP_ACTION"
+    },
+    {
+        "name": "EXPAND_STATUS_BAR",
+        "description": "Permite que um aplicativo expanda ou recolha a barra de status.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.EXPAND_STATUS_BAR"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_CAMERA",
+        "description": "Permite que um aplicativo comum use Service.startForeground com o tipo camera.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_CAMERA"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_CONNECTED_DEVICE",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo connectedDevice.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_DATA_SYNC",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo dataSync.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_DATA_SYNC"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_HEALTH",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo health.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_HEALTH"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_LOCATION",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo location.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_LOCATION"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+        "description": "Permite que um aplicativo comum use Service.startForeground com o tipo mediaPlayback.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_MEDIA_PROCESSING",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo mediaProcessing.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_MEDIA_PROCESSING"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_MEDIA_PROJECTION",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo mediaProjection.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_MICROPHONE",
+        "description": "Permite que um aplicativo comum use Service.startForeground com o tipo microfone.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_MICROPHONE"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_PHONE_CALL",
+        "description": "Permite que um aplicativo comum use Service.startForeground com o tipo phoneCall.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_PHONE_CALL"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_REMOTE_MESSAGING",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo remoteMessaging.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_SPECIAL_USE",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo specialUse.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_SPECIAL_USE"
+    },
+    {
+        "name": "FOREGROUND_SERVICE_SYSTEM_EXEMPTED",
+        "description": "Permite que um aplicativo regular use Service.startForeground com o tipo systemExempted. Os aplicativos têm permissao para usar esse tipo somente nos casos de uso listados em ServiceInfo.FOREGROUND_SERVICE_TYPE_SYSTEM_EXEMPTED.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED"
+    },
+    {
+        "name": "GET_ACCOUNTS",
+        "description": "Permite acesso a lista de contas no Accounts Service. Observacao: a partir do Android 6.0 (nivel de API 23), se um aplicativo compartilhar a assinatura do autenticador que gerencia uma conta, ele nao precisara da permissao GET_ACCOUNTS para ler informacoes sobre essa conta. No Android 5.1 e versoes anteriores, todos os aplicativos precisam da permissao GET_ACCOUNTS para ler informacoes sobre qualquer conta.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.GET_ACCOUNTS"
+    },
+    {
+        "name": "GET_ACCOUNTS_PRIVILEGED",
+        "description": "Permite acesso a lista de contas no Servico de Contas.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.GET_ACCOUNTS_PRIVILEGED"
+    },
+    {
+        "name": "GET_PACKAGE_SIZE",
+        "description": "Permite que um aplicativo descubra o espaco usado por qualquer pacote.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.GET_PACKAGE_SIZE"
+    },
+    {
+        "name": "INSTANT_APP_FOREGROUND_SERVICE",
+        "description": "Permite que um aplicativo instantâneo crie servicos em primeiro plano.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.INSTANT_APP_FOREGROUND_SERVICE"
+    },
+    {
+        "name": "KILL_BACKGROUND_PROCESSES",
+        "description": "Permite que um aplicativo chame ActivityManager.killBackgroundProcesses(String)",
+        "protection_level": "normal",
+        "constant_value": "android.permission.KILL_BACKGROUND_PROCESSES"
+    },
+    {
+        "name": "LAUNCH_CAPTURE_CONTENT_ACTIVITY_FOR_NOTE",
+        "description": "Permite que um aplicativo capture o conteúdo da tela para executar uma captura de tela usando a acao de intencao Intent.ACTION_LAUNCH_CAPTURE_CONTENT_ACTIVITY_FOR_NOTE.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.LAUNCH_CAPTURE_CONTENT_ACTIVITY_FOR_NOTE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ACCESSIBILITY",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a acessibilidade.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ACCESSIBILITY"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ACCOUNT_MANAGEMENT",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao gerenciamento de contas.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ACCOUNT_MANAGEMENT"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ACROSS_USERS",
+        "description": "Permite que um aplicativo defina politicas de dispositivo fora do usuario atual que sao necessarias para proteger a propriedade do dispositivo sem acessar os dados do usuario. Manter essa permissao permite o uso de outras permissoes MANAGE_DEVICE_POLICY_* mantidas em todos os usuarios no dispositivo, desde que nao concedam acesso aos dados do usuario.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ACROSS_USERS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ACROSS_USERS_FULL",
+        "description": "Permite que um aplicativo defina politicas de dispositivo fora do usuario atual. Forma mais completa de MANAGE_DEVICE_POLICY_ACROSS_USERS que remove a restricao de acesso aos dados do usuario. Manter essa permissao permite o uso de quaisquer outras permissoes MANAGE_DEVICE_POLICY_* mantidas em todos os usuarios do dispositivo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ACROSS_USERS_FULL"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ACROSS_USERS_SECURITY_CRITICAL",
+        "description": "Permite que um aplicativo defina politicas de dispositivo fora do usuario atual que sao criticas para proteger dados dentro do usuario atual. Manter essa permissao permite o uso de outras permissoes MANAGE_DEVICE_POLICY_* mantidas em todos os usuarios no dispositivo, desde que sejam necessarias para proteger dados dentro do usuario atual.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ACROSS_USERS_SECURITY_CRITICAL"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_AIRPLANE_MODE",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao modo aviao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_AIRPLANE_MODE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_APPS_CONTROL",
+        "description": "Permite que um aplicativo gerencie a politica referente a modificacao de aplicativos.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_APP_RESTRICTIONS",
+        "description": "Permite que um aplicativo gerencie restricoes de aplicativo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_APP_RESTRICTIONS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a dados de usuarios do aplicativo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_APP_USER_DATA"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ASSIST_CONTENT",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao envio de conteúdo de assistência para um aplicativo privilegiado, como o aplicativo Assistente.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ASSIST_CONTENT"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_AUDIO_OUTPUT",
+        "description": "Permite que um aplicativo defina uma politica relacionada a saida de audio.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_AUDIO_OUTPUT"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_AUTOFILL",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao preenchimento automatico.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_AUTOFILL"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_BACKUP_SERVICE",
+        "description": "Permite que um aplicativo gerencie a politica de servico de backup.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_BACKUP_SERVICE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_BLOCK_UNINSTALL",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a desinstalacao de pacotes de bloqueio.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_BLOCK_UNINSTALL"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_BLUETOOTH",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao bluetooth.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_BLUETOOTH"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_BUGREPORT",
+        "description": "Permite que um aplicativo solicite relatórios de bugs com o consentimento do usuario.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_BUGREPORT"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_CALLS",
+        "description": "Permite que um aplicativo gerencie a politica de chamada.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_CALLS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_CAMERA",
+        "description": "Permite que um aplicativo defina uma politica relacionada a restricao da capacidade de um usuario de usar ou habilitar e desabilitar a câmera.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_CAMERA"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_CAMERA_TOGGLE",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a alternância de câmera.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_CAMERA_TOGGLE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_CERTIFICATES",
+        "description": "Permite que um aplicativo defina politicas relacionadas a certificados.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_CERTIFICATES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_COMMON_CRITERIA_MODE",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas ao modo de criterios comuns.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_COMMON_CRITERIA_MODE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_CONTENT_PROTECTION",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a protecao de conteúdo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_CONTENT_PROTECTION"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES",
+        "description": "Permite que um aplicativo gerencie a politica de recursos de depuracao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_DEFAULT_SMS",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao aplicativo de SMS padrao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_DEFAULT_SMS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_DEVICE_IDENTIFIERS",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a identificadores de dispositivos.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_DEVICE_IDENTIFIERS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_DISPLAY",
+        "description": "Permite que um aplicativo defina uma politica relacionada a exibicao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_DISPLAY"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_FACTORY_RESET",
+        "description": "Permite que um aplicativo defina uma politica relacionada a redefinicao de fabrica.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_FACTORY_RESET"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_FUN",
+        "description": "Permite que um aplicativo defina uma politica relacionada a diversao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_FUN"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_INPUT_METHODS",
+        "description": "Permite que um aplicativo defina politicas relacionadas a metodos de entrada.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_INPUT_METHODS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_INSTALL_UNKNOWN_SOURCES",
+        "description": "Permite que um aplicativo gerencie a politica de instalacao de fontes desconhecidas.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_INSTALL_UNKNOWN_SOURCES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_KEEP_UNINSTALLED_PACKAGES",
+        "description": "Permite que um aplicativo defina uma politica relacionada a manutencao de pacotes desinstalados.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_KEEP_UNINSTALLED_PACKAGES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_KEYGUARD",
+        "description": "Permite que um aplicativo gerencie a politica relacionada ao keyguard.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_KEYGUARD"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_LOCALE",
+        "description": "Permite que um aplicativo defina uma politica relacionada a localidade.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_LOCALE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_LOCATION",
+        "description": "Permite que um aplicativo defina uma politica relacionada a localizacao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_LOCATION"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_LOCK",
+        "description": "Permite que um aplicativo bloqueie um perfil ou o dispositivo com a permissao de usuario cruzado apropriada.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_LOCK"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_LOCK_CREDENTIALS",
+        "description": "Permite que um aplicativo defina uma politica relacionada a credenciais de bloqueio.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_LOCK_CREDENTIALS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_LOCK_TASK",
+        "description": "Permite que um aplicativo gerencie a politica de tarefa de bloqueio.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_LOCK_TASK"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_MANAGED_SUBSCRIPTIONS",
+        "description": "Permite que um aplicativo defina uma politica relacionada a assinaturas baixadas por um administrador.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_MANAGED_SUBSCRIPTIONS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_METERED_DATA",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a dados medidos.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_METERED_DATA"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_MICROPHONE",
+        "description": "Permite que um aplicativo defina uma politica relacionada a restricao da capacidade de um usuario de usar ou habilitar e desabilitar o microfone.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_MICROPHONE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_MICROPHONE_TOGGLE",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a alternância do microfone.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_MICROPHONE_TOGGLE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+        "description": "Permite que um aplicativo defina politicas relacionadas a redes móveis.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_MOBILE_NETWORK"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_MODIFY_USERS",
+        "description": "Permite que um aplicativo gerencie a politica impedindo que usuarios modifiquem usuarios.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_MODIFY_USERS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_MTE",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a Memory Tagging Extension (MTE).",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_MTE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION",
+        "description": "Permite que um aplicativo defina uma politica relacionada a comunicacoes próximas (por exemplo, Beam e streaming próximo).",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_NETWORK_LOGGING",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao registro de rede.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_NETWORK_LOGGING"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY",
+        "description": "Permite que um aplicativo gerencie a identidade da organizacao de gerenciamento.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_OVERRIDE_APN",
+        "description": "Permite que um aplicativo defina uma politica relacionada a APNs de substituicao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_OVERRIDE_APN"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PACKAGE_STATE",
+        "description": "Permite que um aplicativo defina uma politica relacionada a ocultacao e suspensao de pacotes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PACKAGE_STATE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PHYSICAL_MEDIA",
+        "description": "Permite que um aplicativo defina uma politica relacionada a midia fisica.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PHYSICAL_MEDIA"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PRINTING",
+        "description": "Permite que um aplicativo defina uma politica relacionada a impressao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PRINTING"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PRIVATE_DNS",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao DNS privado.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PRIVATE_DNS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PROFILES",
+        "description": "Permite que um aplicativo defina politicas relacionadas a perfis.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PROFILES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PROFILE_INTERACTION",
+        "description": "Permite que um aplicativo defina uma politica relacionada a interacao com perfis (por exemplo, nao permitindo copiar e colar entre perfis).",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PROFILE_INTERACTION"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_PROXY",
+        "description": "Permite que um aplicativo defina um proxy HTTP global independente de rede.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_PROXY"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_QUERY_SYSTEM_UPDATES",
+        "description": "Permite que um aplicativo consulte atualizacoes do sistema.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_QUERY_SYSTEM_UPDATES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_RESET_PASSWORD",
+        "description": "Permite que um aplicativo force a definicao de uma nova senha de desbloqueio de dispositivo ou um desafio de perfil gerenciado no usuario atual.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_RESET_PASSWORD"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS",
+        "description": "Permite que um aplicativo defina uma politica relacionada a restricao do usuario de configurar DNS privado.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_RUNTIME_PERMISSIONS",
+        "description": "Permite que um aplicativo defina o estado de concessao de permissoes de tempo de execucao em pacotes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_RUNTIME_PERMISSIONS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_RUN_IN_BACKGROUND",
+        "description": "Permite que um aplicativo defina uma politica relacionada a usuarios em execucao em segundo plano.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_RUN_IN_BACKGROUND"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SAFE_BOOT",
+        "description": "Permite que um aplicativo gerencie a politica de inicializacao segura.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SAFE_BOOT"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SCREEN_CAPTURE",
+        "description": "Permite que um aplicativo defina uma politica relacionada a captura de tela.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SCREEN_CAPTURE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SCREEN_CONTENT",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao uso do conteúdo da tela.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SCREEN_CONTENT"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SECURITY_LOGGING",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao registro de seguranca.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SECURITY_LOGGING"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SETTINGS",
+        "description": "Permite que um aplicativo defina politicas relacionadas a configuracoes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SETTINGS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SMS",
+        "description": "Permite que um aplicativo defina uma politica relacionada a sms.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SMS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_STATUS_BAR",
+        "description": "Permite que um aplicativo defina uma politica relacionada a barra de status.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_STATUS_BAR"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SUPPORT_MESSAGE",
+        "description": "Permite que um aplicativo defina mensagens de suporte para quando uma acao do usuario for afetada por uma politica ativa.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SUPPORT_MESSAGE"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SUSPEND_PERSONAL_APPS",
+        "description": "Permite que um aplicativo defina uma politica relacionada a suspensao de aplicativos pessoais.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SUSPEND_PERSONAL_APPS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SYSTEM_APPS",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a aplicativos do sistema.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SYSTEM_APPS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS",
+        "description": "Permite que um aplicativo defina politicas relacionadas a dialogos do sistema.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_SYSTEM_UPDATES",
+        "description": "Permite que um aplicativo defina politicas relacionadas a atualizacoes do sistema.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_SYSTEM_UPDATES"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_TIME",
+        "description": "Permite que um aplicativo gerencie a politica do dispositivo relacionada ao tempo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_TIME"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_USB_DATA_SIGNALLING",
+        "description": "Permite que um aplicativo defina politicas relacionadas a sinalizacao de dados USB.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_USB_DATA_SIGNALLING"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER",
+        "description": "Permite que um aplicativo defina uma politica relacionada a transferências de arquivos USB.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_USERS",
+        "description": "Permite que um aplicativo defina politicas relacionadas a usuarios.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_USERS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_VPN",
+        "description": "Permite que um aplicativo defina politicas relacionadas a VPNs.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_VPN"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_WALLPAPER",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao papel de parede.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_WALLPAPER"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_WIFI",
+        "description": "Permite que um aplicativo defina uma politica relacionada ao Wifi.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_WIFI"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_WINDOWS",
+        "description": "Permite que um aplicativo defina politicas relacionadas a janelas.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_WINDOWS"
+    },
+    {
+        "name": "MANAGE_DEVICE_POLICY_WIPE_DATA",
+        "description": "Permite que um aplicativo gerencie politicas relacionadas a limpeza de dados.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_POLICY_WIPE_DATA"
+    },
+    {
+        "name": "MANAGE_MEDIA",
+        "description": "Permite que um aplicativo modifique e exclua arquivos de midia neste dispositivo ou em qualquer dispositivo de armazenamento conectado sem confirmacao do usuario.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.MANAGE_MEDIA"
+    },
+    {
+        "name": "MANAGE_ONGOING_CALLS",
+        "description": "Permite consultar detalhes de chamadas em andamento e gerenciar chamadas em andamento",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.MANAGE_ONGOING_CALLS"
+    },
+    {
+        "name": "MANAGE_OWN_CALLS",
+        "description": "Permite um aplicativo de chamada que gerencia suas próprias chamadas por meio das APIs ConnectionService autogerenciadas.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.MANAGE_OWN_CALLS"
+    },
+    {
+        "name": "NFC",
+        "description": "Permite que aplicativos executem operacoes de E/S via NFC.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.NFC"
+    },
+    {
+        "name": "NFC_PREFERRED_PAYMENT_INFO",
+        "description": "Permite que os aplicativos recebam informacoes do servico de pagamento preferencial NFC.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.NFC_PREFERRED_PAYMENT_INFO"
+    },
+    {
+        "name": "NFC_TRANSACTION_EVENT",
+        "description": "Permite que aplicativos recebam eventos de transacao NFC.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.NFC_TRANSACTION_EVENT"
+    },
+    {
+        "name": "PROCESS_OUTGOING_CALLS",
+        "description": "Permite que um aplicativo veja o número sendo discado durante uma chamada de saida com a opcao de redirecionar a chamada para um número diferente ou abortar a chamada completamente.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.PROCESS_OUTGOING_CALLS"
+    },
+    {
+        "name": "PROVIDE_OWN_AUTOFILL_SUGGESTIONS",
+        "description": "Permite que um aplicativo exiba suas sugestoes usando o framework de preenchimento automatico. Por enquanto, essa permissao e concedida apenas ao aplicativo Browser.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.PROVIDE_OWN_AUTOFILL_SUGGESTIONS"
+    },
+    {
+        "name": "PROVIDE_REMOTE_CREDENTIALS",
+        "description": "Permite que um aplicativo armazene e recupere credenciais de um dispositivo remoto.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.PROVIDE_REMOTE_CREDENTIALS"
+    },
+    {
+        "name": "QUERY_ALL_PACKAGES",
+        "description": "Permite a consulta de qualquer aplicativo normal no dispositivo, independentemente das declaracoes de manifesto.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.QUERY_ALL_PACKAGES"
+    },
+    {
+        "name": "READ_CALL_LOG",
+        "description": "Permite que um aplicativo leia o registro de chamadas do usuario. Observacao: se seu aplicativo usar a permissao READ_CONTACTS e seus valores minSdkVersion e targetSdkVersion estiverem definidos como 15 ou menos, o sistema implicitamente concedera essa permissao ao seu aplicativo. Se você nao precisar dessa permissao, certifique-se de que seu targetSdkVersion seja 16 ou mais.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_CALL_LOG"
+    },
+    {
+        "name": "READ_CONTACTS",
+        "description": "Permite que um aplicativo leia os dados de contato do usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_CONTACTS"
+    },
+    {
+        "name": "READ_MEDIA_IMAGES",
+        "description": "Permite que um aplicativo leia arquivos de imagem de armazenamento externo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_MEDIA_IMAGES"
+    },
+    {
+        "name": "READ_MEDIA_VIDEO",
+        "description": "Permite que um aplicativo leia arquivos de video de armazenamento externo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_MEDIA_VIDEO"
+    },
+    {
+        "name": "READ_MEDIA_VISUAL_USER_SELECTED",
+        "description": "Permite que um aplicativo leia arquivos de imagem ou video de armazenamento externo que um usuario selecionou por meio do seletor de fotos do prompt de permissao.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_MEDIA_VISUAL_USER_SELECTED"
+    },
+    {
+        "name": "READ_PHONE_STATE",
+        "description": "Permite acesso somente leitura ao estado do telefone, incluindo as informacoes atuais da rede celular, o status de quaisquer chamadas em andamento e uma lista de quaisquer PhoneAccounts registradas no dispositivo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_PHONE_STATE"
+    },
+    {
+        "name": "READ_SYNC_SETTINGS",
+        "description": "Permite que os aplicativos leiam as configuracoes de sincronizacao.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.READ_SYNC_SETTINGS"
+    },
+    {
+        "name": "READ_SYNC_STATS",
+        "description": "Permite que os aplicativos leiam as estatisticas de sincronizacao.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.READ_SYNC_STATS"
+    },
+    {
+        "name": "READ_VOICEMAIL",
+        "description": "Permite que um aplicativo leia mensagens de voz no sistema.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "com.android.voicemail.permission.READ_VOICEMAIL"
+    },
+    {
+        "name": "RECEIVE_MMS",
+        "description": "Permite que um aplicativo monitore mensagens MMS recebidas.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.RECEIVE_MMS"
+    },
+    {
+        "name": "RECEIVE_SMS",
+        "description": "Permite que um aplicativo receba mensagens SMS.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.RECEIVE_SMS"
+    },
+    {
+        "name": "RECEIVE_WAP_PUSH",
+        "description": "Permite que um aplicativo receba mensagens push WAP.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.RECEIVE_WAP_PUSH"
+    },
+    {
+        "name": "RECORD_AUDIO",
+        "description": "Permite que um aplicativo grave audio.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.RECORD_AUDIO"
+    },
+    {
+        "name": "REORDER_TASKS",
+        "description": "Permite que um aplicativo altere a ordem Z das tarefas.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REORDER_TASKS"
+    },
+    {
+        "name": "REQUEST_COMPANION_RUN_IN_BACKGROUND",
+        "description": "Permite que um aplicativo complementar seja executado em segundo plano. Essa permissao implica REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND e permite iniciar um servico em primeiro plano a partir do segundo plano.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND"
+    },
+    {
+        "name": "REQUEST_DELETE_PACKAGES",
+        "description": "Permite que um aplicativo solicite a exclusao de pacotes.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_DELETE_PACKAGES"
+    },
+    {
+        "name": "REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
+        "description": "Permissao que um aplicativo deve ter para usar Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
+    },
+    {
+        "name": "REQUEST_INSTALL_PACKAGES",
+        "description": "Permite que um aplicativo solicite a instalacao de pacotes. Aplicativos que visam APIs maiores que 25 devem ter essa permissao para usar Intent.ACTION_INSTALL_PACKAGE.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.REQUEST_INSTALL_PACKAGES"
+    },
+    {
+        "name": "SCHEDULE_EXACT_ALARM",
+        "description": "Permite que aplicativos usem APIs de alarme exato. Esta e uma permissao de acesso especial que pode ser revogada pelo sistema ou pelo usuario. Ela deve ser usada apenas para habilitar recursos voltados para o usuario que exigem alarmes exatos. Para mais detalhes, leia os documentos do desenvolvedor associados.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.SCHEDULE_EXACT_ALARM"
+    },
+    {
+        "name": "SET_ALARM",
+        "description": "Permite que um aplicativo transmita uma intencao para definir um alarme para o usuario.",
+        "protection_level": "normal",
+        "constant_value": "com.android.alarm.permission.SET_ALARM"
+    },
+    {
+        "name": "SET_WALLPAPER_HINTS",
+        "description": "Permite que os aplicativos definam dicas de papel de parede.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.SET_WALLPAPER_HINTS"
+    },
+    {
+        "name": "START_VIEW_PERMISSION_USAGE",
+        "description": "Permite que o titular inicie a tela de uso de permissao para um aplicativo.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.START_VIEW_PERMISSION_USAGE"
+    },
+    {
+        "name": "SYSTEM_ALERT_WINDOW",
+        "description": "Permite que um aplicativo crie janelas usando o tipo WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, mostrado no topo de todos os outros aplicativos. Pouquissimos aplicativos devem usar essa permissao; essas janelas sao destinadas a interacao em nivel de sistema com o usuario.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.SYSTEM_ALERT_WINDOW"
+    },
+    {
+        "name": "TRANSMIT_IR",
+        "description": "Permite usar o transmissor IR do dispositivo, se disponivel.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.TRANSMIT_IR"
+    },
+    {
+        "name": "USE_BIOMETRIC",
+        "description": "Permite que um aplicativo use modalidades biometricas suportadas pelo dispositivo.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.USE_BIOMETRIC"
+    },
+    {
+        "name": "USE_FULL_SCREEN_INTENT",
+        "description": "Obrigatório para aplicativos direcionados a Build.VERSION_CODES.Q que desejam usar intencoes de notificacao em tela cheia.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.USE_FULL_SCREEN_INTENT"
+    },
+    {
+        "name": "USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER",
+        "description": "Permite ler identificadores de dispositivos e usar autenticacao baseada em ICC como EAP-AKA. Frequentemente necessario na autenticacao para acessar o servidor da operadora e gerenciar servicos do assinante.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER"
+    },
+    {
+        "name": "USE_SIP",
+        "description": "Permite que um aplicativo use o servico SIP.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.USE_SIP"
+    },
+    {
+        "name": "UWB_RANGING",
+        "description": "Necessario para poder alcancar dispositivos que usam banda ultralarga.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.UWB_RANGING"
+    },
+    {
+        "name": "VIBRATE",
+        "description": "Permite acesso ao vibrador.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.VIBRATE"
+    },
+    {
+        "name": "WAKE_LOCK",
+        "description": "Permite usar o PowerManager WakeLocks para impedir que o processador hiberne ou que a tela fique escura.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.WAKE_LOCK"
+    },
+    {
+        "name": "WRITE_CALL_LOG",
+        "description": "Permite que um aplicativo grave e leia os dados do registro de chamadas do usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.WRITE_CALL_LOG"
+    },
+    {
+        "name": "WRITE_CONTACTS",
+        "description": "Permite que um aplicativo grave os dados de contato do usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.WRITE_CONTACTS"
+    },
+    {
+        "name": "WRITE_EXTERNAL_STORAGE",
+        "description": "Permite que um aplicativo grave em armazenamento externo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.WRITE_EXTERNAL_STORAGE"
+    },
+    {
+        "name": "WRITE_GSERVICES",
+        "description": "Permite que um aplicativo modifique o mapa de servicos do Google.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.WRITE_SETTINGS"
+    },
+    {
+        "name": "WRITE_SYNC_SETTINGS",
+        "description": "Permite que os aplicativos gravem as configuracoes de sincronizacao.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.WRITE_SYNC_SETTINGS"
+    },
+    {
+        "name": "WRITE_VOICEMAIL",
+        "description": "Permite que um aplicativo modifique e remova mensagens de voz existentes no sistema.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "com.android.voicemail.permission.WRITE_VOICEMAIL"
+    },
+    {
+        "name": "START_FOREGROUND_SERVICES_FROM_BACKGROUND",
+        "description": "Permite que um aplicativo inicie servicos em primeiro plano a partir do segundo plano a qualquer momento.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND"
+    },
+    {
+        "name": "ACTIVITY_RECOGNITION",
+        "description": "Permite que um aplicativo reconheca atividade fisica.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.ACTIVITY_RECOGNITION"
+    },
+    {
+        "name": "REQUEST_COMPANION_PROFILE_WATCH",
+        "description": "Permite que o aplicativo solicite associacao a um dispositivo como um relógio",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_COMPANION_PROFILE_WATCH"
+    },
+    {
+        "name": "SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE",
+        "description": "Permite que um aplicativo assine o estado de protecao de teclado bloqueada (ou seja, exibindo).",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE"
+    },
+    {
+        "name": "ENFORCE_UPDATE_OWNERSHIP",
+        "description": "Permite que um aplicativo indique que tem a intencao de se tornar o proprietario da atualizacao.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.ENFORCE_UPDATE_OWNERSHIP"
+    },
+    {
+        "name": "START_VIEW_APP_FEATURES",
+        "description": "Permite que o titular inicie a tela com uma lista de recursos do aplicativo.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.START_VIEW_APP_FEATURES"
+    },
+    {
+        "name": "UPDATE_PACKAGES_WITHOUT_USER_ACTION",
+        "description": "Permite que um aplicativo indique que nenhuma acao do usuario deve ser necessaria para uma atualizacao do aplicativo.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+    },
+    {
+        "name": "MANAGE_DEVICE_LOCK_STATE",
+        "description": "Permite que aplicativos de quiosque de dispositivos financiados executem acoes no servico de bloqueio de dispositivo",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DEVICE_LOCK_STATE"
+    },
+    {
+        "name": "WRITE_CALENDAR",
+        "description": "Permite que um aplicativo grave os dados do calendario do usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.WRITE_CALENDAR"
+    },
+    {
+        "name": "READ_CALENDAR",
+        "description": "Permite que um aplicativo leia os dados do calendario do usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_CALENDAR"
+    },
+    {
+        "name": "REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND",
+        "description": "Permite iniciar um servico em primeiro plano a partir do segundo plano.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_COMPANION_START_FOREGROUND_SERVICES_FROM_BACKGROUND"
+    },
+    {
+        "name": "READ_INPUT_STATE",
+        "description": "Permite que um aplicativo recupere o estado atual de chaves e interruptores.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_INPUT_STATE"
+    },
+    {
+        "name": "READ_LOGS",
+        "description": "Permite que um aplicativo leia os arquivos de log do sistema de baixo nivel.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_LOGS"
+    },
+    {
+        "name": "BIND_CREDENTIAL_PROVIDER_SERVICE",
+        "description": "Deve ser exigido por um CredentialProviderService para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_CREDENTIAL_PROVIDER_SERVICE"
+    },
+    {
+        "name": "FOREGROUND_SERVICE",
+        "description": "Permite que um aplicativo regular use Service.startForeground",
+        "protection_level": "normal",
+        "constant_value": "android.permission.FOREGROUND_SERVICE"
+    },
+    {
+        "name": "DETECT_SCREEN_CAPTURE",
+        "description": "Permite que um aplicativo seja notificado quando uma captura de tela de suas janelas for tentada.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.DETECT_SCREEN_CAPTURE"
+    },
+    {
+        "name": "MASTER_CLEAR",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MASTER_CLEAR"
+    },
+    {
+        "name": "INTERNET",
+        "description": "Permite que aplicativos abram soquetes de rede.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.INTERNET"
+    },
+    {
+        "name": "MANAGE_EXTERNAL_STORAGE",
+        "description": "Permite que um aplicativo tenha amplo acesso ao armazenamento externo em armazenamento com escopo.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.MANAGE_EXTERNAL_STORAGE"
+    },
+    {
+        "name": "ACCESS_CHECKIN_PROPERTIES",
+        "description": "Permite acesso de leitura/gravacao a tabela propriedades no banco de dados de check-in, para alterar valores que sao enviados.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.ACCESS_CHECKIN_PROPERTIES"
+    },
+    {
+        "name": "SET_WALLPAPER",
+        "description": "Permite que os aplicativos definam o papel de parede.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.SET_WALLPAPER"
+    },
+    {
+        "name": "BROADCAST_STICKY",
+        "description": "Permite que um aplicativo transmita intencoes persistentes. Essas sao transmissoes cujos dados sao mantidos pelo sistema após serem concluidas, para que os clientes possam recupera-los rapidamente sem ter que esperar pela próxima transmissao",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.BROADCAST_STICKY"
+    },
+    {
+        "name": "GLOBAL_SEARCH",
+        "description": "Esta permissao pode ser usada em provedores de conteúdo para permitir que o sistema de pesquisa global acesse seus dados.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.GLOBAL_SEARCH"
+    },
+    {
+        "name": "MODIFY_AUDIO_SETTINGS",
+        "description": "Permite que um aplicativo modifique as configuracoes globais de audio.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.MODIFY_AUDIO_SETTINGS"
+    },
+    {
+        "name": "REQUEST_COMPANION_PROFILE_GLASSES",
+        "description": "Permite que o aplicativo solicite associacao a um dispositivo por meio CompanionDeviceManager de óculos",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_COMPANION_PROFILE_GLASSES"
+    },
+    {
+        "name": "UNINSTALL_SHORTCUT",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "com.android.launcher.permission.UNINSTALL_SHORTCUT"
+    },
+    {
+        "name": "READ_EXTERNAL_STORAGE",
+        "description": "Permite que um aplicativo leia dados de armazenamento externo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_EXTERNAL_STORAGE"
+    },
+    {
+        "name": "REQUEST_COMPANION_USE_DATA_IN_BACKGROUND",
+        "description": "Permite que um aplicativo complementar use dados em segundo plano.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_COMPANION_USE_DATA_IN_BACKGROUND"
+    },
+    {
+        "name": "CONTROL_LOCATION_UPDATES",
+        "description": "Permite habilitar/desabilitar notificacoes de atualizacao de localizacao do radio.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.CONTROL_LOCATION_UPDATES"
+    },
+    {
+        "name": "MEDIA_ROUTING_CONTROL",
+        "description": "Permite que um aplicativo controle o roteamento de aplicativos de midia.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MEDIA_ROUTING_CONTROL"
+    },
+    {
+        "name": "MOUNT_UNMOUNT_FILESYSTEMS",
+        "description": "Permite montar e desmontar sistemas de arquivos para armazenamento removivel.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    },
+    {
+        "name": "REQUEST_PASSWORD_COMPLEXITY",
+        "description": "Permite que um aplicativo solicite a complexidade do bloqueio de tela e solicite que os usuarios atualizem o bloqueio de tela para um determinado nivel de complexidade.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.REQUEST_PASSWORD_COMPLEXITY"
+    },
+    {
+        "name": "HIGH_SAMPLING_RATE_SENSORS",
+        "description": "Permite que um aplicativo acesse dados do sensor com uma taxa de amostragem maior que 200 Hz.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.HIGH_SAMPLING_RATE_SENSORS"
+    },
+    {
+        "name": "NEARBY_WIFI_DEVICES",
+        "description": "Necessario para poder anunciar e se conectar a dispositivos próximos via Wi-Fi.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.NEARBY_WIFI_DEVICES"
+    },
+    {
+        "name": "RUN_USER_INITIATED_JOBS",
+        "description": "Permite que os aplicativos usem a API de jobs iniciados pelo usuario.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.RUN_USER_INITIATED_JOBS"
+    },
+    {
+        "name": "MOUNT_FORMAT_FILESYSTEMS",
+        "description": "Permite formatar sistemas de arquivos para armazenamento removivel.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MOUNT_FORMAT_FILESYSTEMS"
+    },
+    {
+        "name": "CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS",
+        "description": "Permite que um navegador invoque o conjunto de APIs de consulta para obter metadados.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS"
+    },
+    {
+        "name": "DELIVER_COMPANION_MESSAGES",
+        "description": "Permite que um aplicativo entregue mensagens complementares ao sistema",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.DELIVER_COMPANION_MESSAGES"
+    },
+    {
+        "name": "PACKAGE_USAGE_STATS",
+        "description": "Permite que um aplicativo colete estatisticas de uso de componentes",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.PACKAGE_USAGE_STATS"
+    },
+    {
+        "name": "SET_PROCESS_LIMIT",
+        "description": "Permite que um aplicativo defina o número maximo de processos de aplicativo (desnecessarios) que podem ser executados.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_PROCESS_LIMIT"
+    },
+    {
+        "name": "READ_SMS",
+        "description": "Permite que um aplicativo leia mensagens SMS.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_SMS"
+    },
+    {
+        "name": "BLUETOOTH_SCAN",
+        "description": "Necessario para poder descobrir e emparelhar dispositivos Bluetooth próximos.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.BLUETOOTH_SCAN"
+    },
+    {
+        "name": "BROADCAST_SMS",
+        "description": "Permite que um aplicativo transmita uma notificacao de recebimento de SMS.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.BROADCAST_SMS"
+    },
+    {
+        "name": "INSTALL_PACKAGES",
+        "description": "Permite que um aplicativo instale pacotes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.INSTALL_PACKAGES"
+    },
+    {
+        "name": "INSTALL_SHORTCUT",
+        "description": "Permite que um aplicativo instale um atalho no Launcher.",
+        "protection_level": "normal",
+        "constant_value": "com.android.launcher.permission.INSTALL_SHORTCUT"
+    },
+    {
+        "name": "SMS_FINANCIAL_TRANSACTIONS",
+        "description": "Permite que aplicativos financeiros leiam mensagens SMS filtradas.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.SMS_FINANCIAL_TRANSACTIONS"
+    },
+    {
+        "name": "MEDIA_CONTENT_CONTROL",
+        "description": "Permite que um aplicativo saiba qual conteúdo esta sendo reproduzido e controle sua reproducao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MEDIA_CONTENT_CONTROL"
+    },
+    {
+        "name": "LOADER_USAGE_STATS",
+        "description": "Permite que um carregador de dados leia os logs de acesso de um pacote.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.LOADER_USAGE_STATS"
+    },
+    {
+        "name": "RECEIVE_BOOT_COMPLETED",
+        "description": "Aumentando o tempo que o sistema leva para iniciar e permitindo que os aplicativos sejam executados sem que o usuario esteja ciente deles.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.RECEIVE_BOOT_COMPLETED"
+    },
+    {
+        "name": "READ_BASIC_PHONE_STATE",
+        "description": "Permite acesso somente leitura ao estado do telefone com uma permissao nao perigosa, incluindo informacoes como tipo de rede celular e versao do software.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_BASIC_PHONE_STATE"
+    },
+    {
+        "name": "SET_TIME",
+        "description": "Permite que os aplicativos definam a hora do sistema diretamente.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_TIME"
+    },
+    {
+        "name": "DISABLE_KEYGUARD",
+        "description": "Permite que os aplicativos desabilitem a protecao do teclado caso ela nao seja segura.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.DISABLE_KEYGUARD"
+    },
+    {
+        "name": "REQUEST_COMPANION_PROFILE_COMPUTER",
+        "description": "Permite que o aplicativo solicite associacao a um computador para compartilhar funcionalidades e/ou dados com outros dispositivos, como notificacoes, fotos e midia",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_COMPANION_PROFILE_COMPUTER"
+    },
+    {
+        "name": "REQUEST_COMPANION_PROFILE_AUTOMOTIVE_PROJECTION",
+        "description": "Permite que o aplicativo solicite a associacao a uma unidade principal de veiculo com capacidade de projecao automotiva",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_COMPANION_PROFILE_AUTOMOTIVE_PROJECTION"
+    },
+    {
+        "name": "SEND_SMS",
+        "description": "Permite que um aplicativo envie mensagens SMS.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.SEND_SMS"
+    },
+    {
+        "name": "SET_TIME_ZONE",
+        "description": "Permite que os aplicativos definam o fuso horario do sistema diretamente.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_TIME_ZONE"
+    },
+    {
+        "name": "SET_PREFERRED_APPLICATIONS",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_PREFERRED_APPLICATIONS"
+    },
+    {
+        "name": "BIND_CARRIER_SERVICES",
+        "description": "O processo do sistema que tem permissao para vincular servicos em aplicativos de operadora tera essa permissao. Os aplicativos de operadora devem usar essa permissao para proteger seus servicos aos quais somente o sistema tem permissao para vincular.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.BIND_CARRIER_SERVICES"
+    },
+    {
+        "name": "SET_DEBUG_APP",
+        "description": "Configurar um aplicativo para depuracao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_DEBUG_APP"
+    },
+    {
+        "name": "READ_MEDIA_AUDIO",
+        "description": "Permite que um aplicativo leia arquivos de audio de armazenamento externo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_MEDIA_AUDIO"
+    },
+    {
+        "name": "ACCESS_COARSE_LOCATION",
+        "description": "Permite que um aplicativo acesse a localizacao em segundo plano.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.ACCESS_COARSE_LOCATION"
+    },
+    {
+        "name": "SET_BIOMETRIC_DIALOG_ADVANCED",
+        "description": "Permite que um aplicativo defina recursos avancados no BiometricDialog (SystemUI), incluindo logotipo, descricao do logotipo e visualizacao de conteúdo com botao de mais opcoes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_BIOMETRIC_DIALOG_ADVANCED"
+    },
+    {
+        "name": "USE_FINGERPRINT",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.USE_FINGERPRINT"
+    },
+    {
+        "name": "CHANGE_CONFIGURATION",
+        "description": "Permite que um aplicativo modifique a configuracao atual, como localidade.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.CHANGE_CONFIGURATION"
+    },
+    {
+        "name": "WRITE_SECURE_SETTINGS",
+        "description": "Permite que um aplicativo leia ou grave as configuracoes seguras do sistema.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.WRITE_SECURE_SETTINGS"
+    },
+    {
+        "name": "CAMERA",
+        "description": "Necessario para poder acessar o dispositivo da câmera. Isso aplicara automaticamente o elemento de manifesto uses-feature para todos os recursos da câmera. Se você nao precisar de todos os recursos da câmera ou puder operar corretamente se uma câmera nao estiver disponivel, você devera modificar seu manifesto conforme apropriado para instalar em dispositivos que nao suportam todos os recursos da câmera.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.CAMERA"
+    },
+    {
+        "name": "POST_NOTIFICATIONS",
+        "description": "Permite que um aplicativo publique notificacoes",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.POST_NOTIFICATIONS"
+    },
+    {
+        "name": "UPDATE_DEVICE_STATS",
+        "description": "Permite que um aplicativo atualize estatisticas do dispositivo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.UPDATE_DEVICE_STATS"
+    },
+    {
+        "name": "CALL_COMPANION_APP",
+        "description": "Permite que um aplicativo que implementa a API InCallService seja elegivel para ser habilitado como um aplicativo complementar de chamada. Isso significa que a estrutura Telecom se vinculara a implementacao InCallService do aplicativo quando houver chamadas ativas. O aplicativo pode usar a API InCallService para visualizar informacoes sobre chamadas no sistema e controlar essas chamadas.",
+        "protection_level": "normal",
+        "constant_value": "android.permission.CALL_COMPANION_APP"
+    },
+    {
+        "name": "WRITE_SETTINGS",
+        "description": "Permite que um aplicativo leia ou grave as configuracoes do sistema.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.WRITE_SETTINGS"
+    },
+    {
+        "name": "MANAGE_WIFI_NETWORK_SELECTION",
+        "description": "Essa permissao e usada para permitir que os OEMs concedam aos seus aplicativos confiaveis ​​acesso a um subconjunto de APIs de Wi-Fi privilegiadas para melhorar o desempenho do Wi-Fi.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_WIFI_NETWORK_SELECTION"
+    },
+    {
+        "name": "CHANGE_COMPONENT_ENABLED_STATE",
+        "description": "Permite que um aplicativo altere se um componente do aplicativo (diferente do seu proprio) esta habilitado ou nao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.CHANGE_COMPONENT_ENABLED_STATE"
+    },
+    {
+        "name": "SET_ANIMATION_SCALE",
+        "description": "Modifique o fator de escala da animacao global.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_ANIMATION_SCALE"
+    },
+    {
+        "name": "BIND_AUTOFILL_SERVICE",
+        "description": "Deve ser exigido por um AutofillService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.BIND_AUTOFILL_SERVICE"
+    },
+    {
+        "name": "READ_PHONE_NUMBERS",
+        "description": "Permite acesso de leitura ao(s) número(s) de telefone do dispositivo.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.READ_PHONE_NUMBERS"
+    },
+    {
+        "name": "MODIFY_PHONE_STATE",
+        "description": "Permite a modificacao do estado da telefonia - ligado, mmi, etc. Nao inclui fazer chamadas.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MODIFY_PHONE_STATE"
+    },
+    {
+        "name": "WRITE_APN_SETTINGS",
+        "description": "Permite que os aplicativos gravem as configuracoes de APN e leiam campos confidenciais de configuracoes de APN existentes, como usuario e senha.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.WRITE_APN_SETTINGS"
+    },
+    {
+        "name": "LOCATION_HARDWARE",
+        "description": "Permite que um aplicativo use recursos de localizacao no hardware, como a API de geofencing.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.LOCATION_HARDWARE"
+    },
+    {
+        "name": "REQUEST_COMPANION_PROFILE_APP_STREAMING",
+        "description": "Permite que o aplicativo solicite a associacao a um display virtual capaz de transmitir aplicativos Android ",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_COMPANION_PROFILE_APP_STREAMING"
+    },
+    {
+        "name": "SET_ALWAYS_FINISH",
+        "description": "Permite que um aplicativo controle se as atividades sao concluidas imediatamente quando colocadas em segundo plano.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SET_ALWAYS_FINISH"
+    },
+    {
+        "name": "OVERRIDE_WIFI_CONFIG",
+        "description": "Permite que um aplicativo modifique qualquer configuracao de wifi, mesmo se criada por outro aplicativo. Uma vez reconfigurado, o criador original nao pode fazer mais nenhuma modificacao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.OVERRIDE_WIFI_CONFIG"
+    },
+    {
+        "name": "BIND_CONDITION_PROVIDER_SERVICE",
+        "description": "Deve ser exigido por um ConditionProviderService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinatura",
+        "constant_value": "android.permission.BIND_CONDITION_PROVIDER_SERVICE"
+    },
+    {
+        "name": "USE_EXACT_ALARM",
+        "description": "Permite que os aplicativos usem alarmes exatos, SCHEDULE_EXACT_ALARMmas sem precisar solicitar essa permissao ao usuario.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.USE_EXACT_ALARM"
+    },
+    {
+        "name": "INTERACT_ACROSS_PROFILES",
+        "description": "Permite a interacao entre perfis no mesmo grupo de perfis.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.INTERACT_ACROSS_PROFILES"
+    },
+    {
+        "name": "FACTORY_TEST",
+        "description": "Execute como um aplicativo de teste do fabricante, executando como usuario root. Disponivel somente quando o dispositivo estiver sendo executado no modo de teste do fabricante.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.FACTORY_TEST"
+    },
+    {
+        "name": "BIND_COMPANION_DEVICE_SERVICE",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.BIND_COMPANION_DEVICE_SERVICE"
+    },
+    {
+        "name": "STATUS_BAR",
+        "description": "Permite que um aplicativo abra, feche ou desative a barra de status e seus icones.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.STATUS_BAR"
+    },
+    {
+        "name": "REQUEST_COMPANION_PROFILE_NEARBY_DEVICE_STREAMING",
+        "description": "Permite que o aplicativo solicite a transmissao de conteúdo de um host Android para um dispositivo próximo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_COMPANION_PROFILE_NEARBY_DEVICE_STREAMING"
+    },
+    {
+        "name": "MANAGE_DOCUMENTS",
+        "description": "Permite que um aplicativo gerencie o acesso a documentos, geralmente como parte de um seletor de documentos.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_DOCUMENTS"
+    },
+    {
+        "name": "BIND_REMOTEVIEWS",
+        "description": "Deve ser exigido por um RemoteViewsService, para garantir que somente o sistema possa se vincular a ele.",
+        "protection_level": "assinaturaOuSistema",
+        "constant_value": "android.permission.BIND_REMOTEVIEWS"
+    },
+    {
+        "name": "REQUEST_OBSERVE_COMPANION_DEVICE_PRESENCE",
+        "description": "Permite que um aplicativo assine notificacoes sobre a alteracao do status de presenca do dispositivo complementar associado",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_OBSERVE_COMPANION_DEVICE_PRESENCE"
+    },
+    {
+        "name": "HIDE_OVERLAY_WINDOWS",
+        "description": "Permite que um aplicativo impeca que janelas que nao sejam de sobreposicao do sistema sejam desenhadas sobre ele",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.HIDE_OVERLAY_WINDOWS"
+    },
+    {
+        "name": "MANAGE_WIFI_INTERFACES",
+        "description": "Permite que os aplicativos sejam notificados quando uma solicitacao de interface Wi-Fi.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.MANAGE_WIFI_INTERFACES"
+    },
+    {
+        "name": "READ_HOME_APP_SEARCH_DATA",
+        "description": "Permite que um aplicativo consulte dados globais no AppSearch que sao visiveis para a funcao HOME.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_HOME_APP_SEARCH_DATA"
+    },
+    {
+        "name": "BIND_CARRIER_MESSAGING_SERVICE",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.BIND_CARRIER_MESSAGING_SERVICE"
+    },
+    {
+        "name": "INSTALL_LOCATION_PROVIDER",
+        "description": "Permite que um aplicativo instale um provedor de localizacao no Gerenciador de Localizacao.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.INSTALL_LOCATION_PROVIDER"
+    },
+    {
+        "name": "GET_TASKS",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.GET_TASKS"
+    },
+    {
+        "name": "REBOOT",
+        "description": "Necessario para poder reinicializar o dispositivo.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REBOOT"
+    },
+    {
+        "name": "READ_PRECISE_PHONE_STATE",
+        "description": "Permite acesso somente leitura ao estado preciso do telefone.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_PRECISE_PHONE_STATE"
+    },
+    {
+        "name": "DELETE_PACKAGES",
+        "description": "Permite que um aplicativo exclua pacotes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.DELETE_PACKAGES"
+    },
+    {
+        "name": "DIAGNOSTIC",
+        "description": "Permite que aplicativos RW acessem recursos de diagnóstico.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.DIAGNOSTIC"
+    },
+    {
+        "name": "SIGNAL_PERSISTENT_PROCESSES",
+        "description": "Permitir que um aplicativo solicite que um sinal seja enviado a todos os processos persistentes.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.SIGNAL_PERSISTENT_PROCESSES"
+    },
+    {
+        "name": "READ_DROPBOX_DATA",
+        "description": "Permite que um aplicativo acesse os dados no Dropbox.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_DROPBOX_DATA"
+    },
+    {
+        "name": "RESTART_PACKAGES",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.RESTART_PACKAGES"
+    },
+    {
+        "name": "REQUEST_COMPANION_SELF_MANAGED",
+        "description": "Permite que um aplicativo crie uma associacao autogerenciada.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.REQUEST_COMPANION_SELF_MANAGED"
+    },
+    {
+        "name": "READ_ASSISTANT_APP_SEARCH_DATA",
+        "description": "Permite que um aplicativo consulte dados globais no AppSearch que sao visiveis para a funcao ASSISTENTE.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_ASSISTANT_APP_SEARCH_DATA"
+    },
+    {
+        "name": "SEND_RESPOND_VIA_MESSAGE",
+        "description": "Permite que um aplicativo (telefone) envie uma solicitacao a outros aplicativos para manipular a acao de resposta por mensagem durante chamadas recebidas.",
+        "protection_level": "perigoso",
+        "constant_value": "android.permission.SEND_RESPOND_VIA_MESSAGE"
+    },
+    {
+        "name": "READ_NEARBY_STREAMING_POLICY",
+        "description": "Permite que um aplicativo leia a politica de streaming nas proximidades.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.READ_NEARBY_STREAMING_POLICY"
+    },
+    {
+        "name": "DUMP",
+        "description": "Permite que um aplicativo recupere informacoes de despejo de estado dos servicos do sistema.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.DUMP"
+    },
+    {
+        "name": "CONFIGURE_WIFI_DISPLAY",
+        "description": "Permite que um aplicativo configure e se conecte a monitores Wifi.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.CONFIGURE_WIFI_DISPLAY"
+    },
+    {
+        "name": "TURN_SCREEN_ON",
+        "description": "Permite que um aplicativo ligue a tela.",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.TURN_SCREEN_ON"
+    },
+    {
+        "name": "LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+        "description": "",
+        "protection_level": "usoInternoApenas",
+        "constant_value": "android.permission.LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK"
+    }
+]

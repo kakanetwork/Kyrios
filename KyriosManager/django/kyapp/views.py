@@ -1,6 +1,7 @@
 # ==================================================================================================================
 
 
+
 from .models import CustomUser, AnaliseAPK
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
@@ -8,12 +9,15 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.utils.safestring import mark_safe
 from django.contrib import messages
-from .analysis import validar_apk, analisar_arquivo, calc_media
 from django.utils import timezone
+from django.http import FileResponse, Http404
+from django.conf import settings
 from .security import user_required, hash_token, confirmacao_email
 from django.conf import settings
 import requests
 import os
+from .analysis.utils import validar_apk, calc_media
+from .analysis.analysis import analisar_arquivo
 
 # ==================================================================================================================
 
@@ -237,13 +241,20 @@ def home(request):
         # Validando se o arquivo enviado é um APK
         if validar_apk(apk_file, extensao):
             # Exibindo mensagem de sucesso antes de iniciar a análise
-            messages.success(request, 'A análise do APK está em andamento. Por favor, aguarde...')
+            messages.success(request, 'Por favor, contribua para o meu Humilde Café XD. <a href="https://ko-fi.com/kyriosanalysis" target="_blank" class="doacao-link">Faça uma doação aqui!</a>.')
 
             # Analisando o arquivo APK e exibindo mensagem de sucesso ou erro
-            if analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
-                messages.success(request, 'A análise do APK foi concluída com sucesso!')
+            flag, msg, info_msg = analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica)
+
+            if not flag:
+                messages.error(request, msg)
             else:
-                messages.error(request, 'Ocorreu um erro ao analisar o APK.')
+                messages.success(request, msg)
+
+            # Exibindo a mensagem informativa, se houver
+            if info_msg:
+                messages.warning(request, info_msg)
+
         else:
             # Exibindo mensagem de erro se o arquivo enviado não for um APK válido
             messages.error(request, 'O arquivo enviado não é um APK válido.')
@@ -267,7 +278,7 @@ def home(request):
     analises_apk = analises_apk[:10]
 
     # Renderizando o template 'home.html' com os dados necessários
-    return render(request, 'home.html', {'analises_apk': analises_apk, 'media_tempo': media_tempo, 'total': total, 'total_semana': total_semana})
+    return render(request, 'home.html', {'analises_apk': analises_apk, 'media_tempo': media_tempo, 'total': total, 'total_semana': total_semana, })
 
 
 # ==================================================================================================================
@@ -278,7 +289,17 @@ def home(request):
 def table(request):
     user_id = request.session['user_id']
     analises_apk = AnaliseAPK.objects.filter(usuario=user_id).order_by('-id')
-    return render(request, 'table.html', {'analises_apk': analises_apk})
+
+    primeiro_upload_url = None
+    primeiro_analise = analises_apk[0] if analises_apk else None
+
+    # Verifica se primeiro_analise existe e se "upload_url" é uma chave dentro do dicionário "dinamica"
+    if primeiro_analise and 'upload_url' in primeiro_analise.dinamica:
+        primeiro_upload_url = primeiro_analise.dinamica['upload_url']
+    print(primeiro_upload_url, "teste")
+    # Debug: Verifique o conteúdo dos objetos AnaliseAPK
+    # Ajuste conforme a estrutura real
+    return render(request, 'table.html', {'analises_apk': analises_apk, 'upload_url': primeiro_upload_url})
 
 
 # ==================================================================================================================
@@ -314,5 +335,17 @@ def deletar_analise(request, id, flag):
     elif flag == "9G2F4L":
         return redirect('table')
 
+
+# ==================================================================================================================
+
+def baixar_pcap(request, caminho_arquivo):
+    if os.path.exists(caminho_arquivo):
+        nome_arquivo = os.path.basename(caminho_arquivo)  # Extrai o nome do arquivo do caminho
+        print(nome_arquivo, caminho_arquivo)
+        response = FileResponse(open(caminho_arquivo, 'rb'), as_attachment=True, filename=nome_arquivo)
+        return response
+    else:
+        raise Http404("Arquivo não encontrado")
+    
 
 # ==================================================================================================================

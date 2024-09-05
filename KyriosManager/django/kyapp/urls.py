@@ -27,6 +27,9 @@ urlpatterns = [
 
     path('ativacao/', views.ativar_email, name='ativacao'),
     path('reenviar/', views.reenvio_confirmacao, name='reenvio'),
+
+    path('download/<path:caminho_arquivo>/', views.baixar_pcap, name='baixar_pcap'),
+
 ]
 
 
