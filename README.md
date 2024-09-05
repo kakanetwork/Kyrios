@@ -277,9 +277,8 @@ https://github.com/user-attachments/assets/d3bd572d-44c9-493b-8505-7263ddb8faae
 - [x] Desenvolver a estrutura do Frontend
 - [x] Integrar novas ferramentas para análise
 - [x] Implementação de métodos para Análises Estáticas
-- [ ] Implementação das Regras YARA
-- [ ] Testar e Validar a plataforma
-- [ ] Realizar a documentação da Plataforma
+- [x] Testar e Validar a plataforma
+- [X] Realizar a documentação da Plataforma
 
 ---
 
