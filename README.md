@@ -238,6 +238,7 @@ se, os APKs processados serão armazenados em um banco de dados dedicado, transf
     <h4>
       Documentação de todas as ferramentas e tecnologias utilizadas no projeto:
       <br><br>
+      [Dcumentação](https://github.com/kakanetwork/Kyrios/blob/main/Doc_Kyrios.pdf))
     </h4>
   </p>
 </details>
