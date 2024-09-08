@@ -1,20 +1,25 @@
-import subprocess
-import threading
-import time
+# ===============================================================================================
+
 import os
+import time
+import platform
+import threading
+import subprocess
+import logging.config
 from dotenv import load_dotenv
 from .formmatter import formatar_dumpsys, formatar_logcat
-import platform
 
-# Carrega variáveis de ambiente do arquivo .env
-load_dotenv()
+# ===============================================================================================
 
-# Caminho completo para o adb.exe (Android Debug Bridge)
-caminho_adb = os.getenv('CAMINHO_ADB')
-
-# Variável para controlar o estado da conexão ADB
+load_dotenv() # Carrega variáveis de ambiente do arquivo .env
+caminho_adb = os.getenv('CAMINHO_ADB') # Caminho completo para o adb.exe (Android Debug Bridge)
 adb_lock = threading.Lock()  # Lock para garantir que apenas uma conexão ADB esteja ativa por vez
 adb_conectado = False  # Flag para indicar se há uma conexão ativa
+
+# ===============================================================================================
+
+logger_error = logging.getLogger('error')
+logger_info = logging.getLogger('info')
 
 # ===============================================================================================
 
@@ -33,12 +38,14 @@ def executar_comando_adb(comando):
         resultado = subprocess.run(comando_completo, shell=True, check=True, text=True, capture_output=True, encoding='utf-8')
         return resultado.stdout  # Retorna a saída do comando executado
     except subprocess.CalledProcessError as e:
+        logger_error.critical(f"Erro ao executar comando: {str(e)}")
         return None  # Em caso de erro na execução do comando, retorna None
     
 # ===============================================================================================
 
 def iniciar_tcpdump_adb(dispositivo, caminho_remoto_pcap):
     try:
+
         if platform.system() == "Windows":
             # No Windows, execute tcpdump em um novo processo com o & no final
             comando = f"{caminho_adb} -s {dispositivo} shell tcpdump -i any -w {caminho_remoto_pcap}"
@@ -47,12 +54,12 @@ def iniciar_tcpdump_adb(dispositivo, caminho_remoto_pcap):
             # No Linux, execute tcpdump em um novo processo
             comando = f"{caminho_adb} -s {dispositivo} shell tcpdump -i any -w {caminho_remoto_pcap} &"
             subprocess.Popen(comando, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print("Captura de pacotes iniciada com tcpdump")
-    except Exception as e:
-        print(f"Erro ao iniciar a captura de pacotes: {e}")
 
+    except Exception as e:
+        logger_error.critical(f"Erro ao iniciar a captura de pacotes: {str(e)}")
 
 # ===============================================================================================
+
 def conectar_adb(dispositivo):
     """
     Conecta ao ADB e retorna True se a conexão for bem-sucedida.
@@ -66,30 +73,29 @@ def conectar_adb(dispositivo):
     global adb_conectado
 
     if adb_conectado:
-        print("Já há uma conexão ativa")
+        logger_info.debug("Já existe um ADB conectado.")
         return False  # Retorna False se já houver uma conexão ativa
 
     with adb_lock:  # Utiliza um lock para garantir que apenas uma conexão ADB seja feita por vez
         if adb_conectado:
-            print("Uma conexão foi estabelecida enquanto esperávamos")
+            logger_info.debug("Já existe um ADB conectado.")
             return False  # Retorna False se uma conexão for estabelecida enquanto esperávamos
 
         # Tenta conectar ao dispositivo ADB
         try:
-            print(f"Tentando conectar ao dispositivo {dispositivo}")
-            output = executar_comando_adb(f"connect {dispositivo}:5555")
+            executar_comando_adb(f"connect {dispositivo}:5555")
         except Exception as e:
-            print(f"Falha ao conectar ao dispositivo: {e}")
+            logger_error.critical(f"Erro ao conectar com o emulador: {dispositivo}:{str(e)}")
             return False  # Retorna False se houver falha ao conectar
 
         # Verifica se o dispositivo está conectado
         dispositivos_output = executar_comando_adb("devices")
         if dispositivos_output and dispositivo in dispositivos_output:
             adb_conectado = True  # Marca como conectado se o dispositivo estiver na lista
-            print("Conexão ADB estabelecida com sucesso")
+            logger_info.info(f"Conectado ao emulador: {dispositivo}")
             return True
         else:
-            print("Dispositivo não está conectado")
+            logger_error.error(f"Erro ao conectar com o emulador: {dispositivo}:{str(e)}")
             return False  # Retorna False se o dispositivo não estiver conectado
 
 # ===============================================================================================
@@ -129,32 +135,30 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
     """
     # ===============================================================================================
 
-    hash_nome_id = f"{hash_sha256}_{apk_id}"  # Nome único para o APK no dispositivo
-    print("aaaaaaaaaa")
+    # Nome único para o APK no dispositivo
+    hash_nome_id = f"{hash_sha256}_{apk_id}" 
     # Inicializa os dicionários e a lista que serão retornados em caso de erro
     dumpsys_bd = {}
     logcat_bd = {}
     arquivos_modificados = []
-
     # IPs dos dispositivos x86 e x86_64 configurados no .env
     ip_x86_64_disp = os.getenv('IP_x86_64_DISP')
     ip_x86_32_disp = os.getenv('IP_x86_32_DISP')
-
     # Define o caminho remoto do APK no dispositivo emulador
     caminho_remoto_apk = f"/sdcard/{hash_nome_id}.apk"
     caminho_remoto_pcap = f"/sdcard/captura_de_rede_{hash_nome_id}.pcap"
     # Caminho local onde os arquivos serão salvos
     caminho_local_pcap = os.getenv("CAMINHO_LOCAL_PCAP") 
     caminho_upload_pcap = f"{caminho_local_pcap}/captura_de_rede_{hash_nome_id}.pcap"
+    # Máximo de tentativas para verificar a instalação do APK
+    max_tentativas = 5  
 
-    max_tentativas = 5  # Máximo de tentativas para verificar a instalação do APK
+    # ===============================================================================================
 
     # Define o dispositivo e ABI com base na flag 'abi'
     if abi:
-        print("aq")
         dispositivo = ip_x86_32_disp  # IP ou identificador do emulador para x86
     else:
-        print("aq3")
         dispositivo = ip_x86_64_disp  # IP ou identificador do emulador para x86_64
 
     # ===============================================================================================
@@ -164,18 +168,18 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
         try:
             # ===============================================================================================
 
-            print("Conexão ADB estabelecida com sucesso")
             # Envia o APK para o emulador
             executar_comando_adb(f"-s {dispositivo} push {caminho_apk} {caminho_remoto_apk}")
-            print("APK enviado para o emulador")
+            logger_info.info(f"APK enviado para o emulador: {dispositivo}")            
 
             # ===============================================================================================
 
             # Captura pacotes de rede gerados pelo pacote usando tcpdump
             try:
                 iniciar_tcpdump_adb(dispositivo, caminho_remoto_pcap)
-                print("Pacotes de rede capturados usando tcpdump")
+                logger_info.info("Pacotes de rede capturados usando tcpdump")                
             except Exception as e:
+                logger_error.error(f"Erro ao capturar pacotes de rede: {e}")
                 return False, dumpsys_bd, logcat_bd, arquivos_modificados, f"Erro ao capturar pacotes de rede: {e}", caminho_upload_pcap
             
             # ===============================================================================================
@@ -183,8 +187,9 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             try:
                 # Instala o APK no emulador
                 executar_comando_adb(f"-s {dispositivo} shell pm install {caminho_remoto_apk}")
-                print("APK instalado no emulador")
+                logger_info.info("Tentativa de instalação do APK no emulador")
             except Exception as e:
+                logger_error.error(f"Erro ao instalar o APK: {e}")
                 return False, dumpsys_bd, logcat_bd, arquivos_modificados, f"Erro ao instalar o APK, a Arquitetura do seu APK possui modificações não válidas para Análise: {e}", caminho_upload_pcap
     
             # ===============================================================================================
@@ -193,11 +198,11 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             for i in range(max_tentativas):
                 pacotes_instalados = executar_comando_adb(f"-s {dispositivo} shell pm list packages")
                 if f"package:{nome_pacote}" in pacotes_instalados:
-                    print('foi')
+                    logger_info.info('Apk verificado e instalado')
                     break
                 time.sleep(4)
             else:
-                print("Não foi", pacotes_instalados)
+                logger_info.info("APK nao instalado")
                 return False, dumpsys_bd, logcat_bd, arquivos_modificados, "", caminho_upload_pcap
             
             # ===============================================================================================
@@ -205,9 +210,10 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             # Captura informações do pacote instalado usando dumpsys
             try:
                 saida_dumpsys = executar_comando_adb(f'-s {dispositivo} shell dumpsys package {nome_pacote}')
-                print("Informações do pacote capturadas usando dumpsys")
+                logger_info.info("Informações do pacote capturadas usando dumpsys")
                 dumpsys_bd = formatar_dumpsys(saida_dumpsys)
             except Exception as e:
+                logger_error.error(f"Erro ao capturar dumpsys: {e}")
                 return False, {}, {}, [], f"Erro ao capturar dumpsys: {e}", caminho_upload_pcap
 
             # ===============================================================================================
@@ -215,9 +221,10 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             # Captura os logs do pacote
             try:
                 saida_logcat = executar_comando_adb(f"-s {dispositivo} logcat -d")
-                print("Logs do pacote capturados")
+                logger_info.info("Logs do APK capturados.")
                 logcat_bd = formatar_logcat(saida_logcat, [dumpsys_bd.get("userId"), dumpsys_bd.get("gid")], [nome_pacote])
             except Exception as e:
+                logger_error.error(f"Erro ao capturar logcat: {e}")
                 return False, dumpsys_bd, {}, [], f"Erro ao capturar logcat: {e}", caminho_upload_pcap
 
             # ===============================================================================================
@@ -233,8 +240,9 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
                     comando = f"-s {dispositivo} shell find {diretorio} -name '*{nome_pacote}*'"
                     resultado = executar_comando_adb(comando)
                     arquivos_modificados.extend(resultado.splitlines())
-                    print(f"Arquivos modificados ou criados no diretório {diretorio} verificados")
+                    logger_info.info(f"Arquivos modificados ou criados no diretorio {diretorio} verificados")
                 except Exception as e:
+                    logger_error.error(f"Erro ao verificar arquivos modificados no diretorio {diretorio}: {e}")
                     return False, dumpsys_bd, logcat_bd, [], f"Erro ao verificar arquivos modificados no diretório {diretorio}: {e}", caminho_upload_pcap
 
             # ===============================================================================================
@@ -242,21 +250,24 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             # Desinstala o pacote do emulador após a análise
             try:
                 executar_comando_adb(f"-s {dispositivo} uninstall {nome_pacote}")
-                print("Pacote desinstalado do emulador")
+                logger_info.info("Pacote desinstalado do emulador")
             except Exception as e:
+                logger_error.critical(f"Erro ao desinstalar o pacote: {e}")
                 return False, dumpsys_bd, logcat_bd, arquivos_modificados, f"Erro ao desinstalar o pacote: {e}", caminho_upload_pcap
             
+            # ===============================================================================================
+            
             executar_comando_adb(f"-s {dispositivo} shell pkill tcpdump")
-            print("Captura de pacotes parada.")
+            logger_info.info("Captura de pacotes parada.")
             
             # ===============================================================================================
 
             # Limpa os dados residuais do pacote
             try:
                 executar_comando_adb(f"-s {dispositivo} shell pm clear {nome_pacote}")
-                print("Dados residuais do pacote limpos")
-                print("APK removido do emulador")
+                logger_info.info("Dados residuais do pacote limpos")
             except Exception as e:
+                logger_error.error(f"Erro ao limpar dados residuais: {e}")
                 return False, dumpsys_bd, logcat_bd, arquivos_modificados, f"Erro ao limpar dados residuais: {e}", caminho_upload_pcap
 
             # ===============================================================================================
@@ -264,8 +275,9 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             #Transfere a captura de pacotes de rede para o computador local
             try:
                 executar_comando_adb(f"-s {dispositivo} pull {caminho_remoto_pcap} {caminho_local_pcap}")
-                print("Captura de pacotes de rede transferida para o computador local")
+                logger_info.info("Captura de pacotes de rede transferida para o computador local")
             except Exception as e:
+                logger_error.critical(f"Erro ao limpar dados residuais: {e}")
                 return False, dumpsys_bd, logcat_bd, arquivos_modificados, f"Erro ao transferir captura de pacotes de rede: {e}", caminho_upload_pcap
 
             # ===============================================================================================
@@ -276,7 +288,7 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             executar_comando_adb(f"-s {dispositivo} shell rm {caminho_remoto_apk}")
             executar_comando_adb(f"-s {dispositivo} shell rm {caminho_remoto_pcap}")
             desconectar_adb(dispositivo)
-            print("Ocorreu um erro durante a análise do pacote")
+            logger_error.critical(f"Ocorreu um erro durante a análise do pacote: {e}")
             return False, {}, {}, [], f"Ocorreu um erro durante a análise do pacote: {e}", caminho_upload_pcap
 
         # ===============================================================================================
@@ -286,7 +298,7 @@ def gerenciador_adb(abi, caminho_apk, hash_sha256, nome_pacote, apk_id):
             executar_comando_adb(f"-s {dispositivo} shell rm {caminho_remoto_pcap}")
             executar_comando_adb(f"-s {dispositivo} shell rm {caminho_remoto_apk}")
             desconectar_adb(dispositivo)
-            print("Conexão ADB encerrada")
+            logger_info.info("Análise Finalizada.")
 
         # ===============================================================================================
     else:

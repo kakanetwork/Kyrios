@@ -1,14 +1,15 @@
 # ==================================================================================================================
 
 
-import mailtrap as mt
-from functools import wraps
-from django.shortcuts import redirect
-from dotenv import load_dotenv
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-import hashlib
 import os
+import hashlib
+import mailtrap as mt
+import logging.config
+from functools import wraps
+from dotenv import load_dotenv
+from django.shortcuts import redirect
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
 
 
 # ==================================================================================================================
@@ -18,6 +19,8 @@ import os
 
 load_dotenv()
 
+logger_access = logging.getLogger('access')
+logger_info = logging.getLogger('info')
 
 # ==================================================================================================================
 
@@ -34,6 +37,7 @@ def user_required(view_func):
 
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
+        user_ip = request.META.get('REMOTE_ADDR', 'IP não disponível')
 
         # Verificar se o ID do usuário e a hash única estão na sessão
         if 'user_id' in request.session and 'user_token' in request.session:
@@ -42,18 +46,19 @@ def user_required(view_func):
 
             # Verificar se a hash única corresponde ao ID do usuário
             if hash_token(user_id) == user_token:
+                logger_access.info("Validacao do Decorador bem-sucedida.")
 
                 # Se a hash única corresponder, chamar a view original
                 return view_func(request, *args, **kwargs)
         
         # Se o ID do usuário ou a hash única não estiverem na sessão ou não corresponderem, redirecionar para a página de login
-        return redirect('signin')
+        logger_access.warning(f"Validacao do Decorador recusada: {user_ip}")
+        return redirect('403')
     
     return wrapper
 
 
 # ==================================================================================================================
-
 
 def hash_token(valor):
     """

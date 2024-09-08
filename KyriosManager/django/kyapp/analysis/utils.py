@@ -1,5 +1,7 @@
-from datetime import datetime
+# ==================================================================================================================
+
 import os, hashlib
+from datetime import datetime
 
 # ==================================================================================================================
 
@@ -83,11 +85,11 @@ def validar_apk(arquivo, extensao):
     """
     Valida se o arquivo enviado é um APK válido.
 
-    Parâmetros:
+    Args:
         arquivo: Arquivo enviado que deve ser validado.
         extensao: Extensão do arquivo (espera-se que seja '.apk').
 
-    Retorna:
+    Returns:
         True se o arquivo for um APK válido, False caso contrário.
     """
     # Assinatura de um arquivo APK

@@ -1,9 +1,19 @@
-import time
-import requests
+# ===============================================================================================
+
 import os
+import time
 import hashlib
+import requests
+import logging.config
+
 
 # ===============================================================================================
+
+logger_error = logging.getLogger('error')
+logger_info = logging.getLogger('info')
+
+# ===============================================================================================
+
 
 def vt_analise_estatica(apk_bytes, file_name):
     """
@@ -39,7 +49,7 @@ def vt_analise_estatica(apk_bytes, file_name):
     response = requests.get(url_file_report, headers=headers)
 
     if response.status_code == 200:
-        print("Relatório existente encontrado no VirusTotal.")
+        logger_info.info("Relatorio existente encontrado no VirusTotal.")
         status_response = response.json()
 
     # ===============================================================================================
@@ -71,8 +81,7 @@ def vt_analise_estatica(apk_bytes, file_name):
 
         # Verificar se a análise está concluída
         while status_response.get('data', {}).get('attributes', {}).get('status') != 'completed':
-            print(status_response.get('data', {}).get('attributes', {}).get('status'))
-            print("Análise ainda em andamento... Aguardando mais tempo.")
+            logger_info.info("Análise ainda em andamento... Aguardando mais tempo.")
             time.sleep(10)  # Espera mais tempo
             response = requests.get(url_response, headers=headers)
             response.raise_for_status()

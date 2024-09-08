@@ -1,13 +1,13 @@
 # ===============================================================================================
 
-
-from pyaxmlparser import APK
-import json
-from dotenv import load_dotenv
 import os
+import json
+from pyaxmlparser import APK
+from dotenv import load_dotenv
+
+# ===============================================================================================
 
 load_dotenv()
-
 
 # ===============================================================================================
 
@@ -25,9 +25,6 @@ def leitura_manifesto_perms(caminho_apk):
 
     # Caminho relativo ajustado, dependendo da localização do script e do arquivo JSON
     arq_perms_detalhes = os.getenv('PATH_JSON_DETALHES')
-
-    # Cria um objeto BytesIO a partir dos bytes do APK
-    #apk_file = io.BytesIO(apk_bytes)
 
     apk = APK(caminho_apk)
 

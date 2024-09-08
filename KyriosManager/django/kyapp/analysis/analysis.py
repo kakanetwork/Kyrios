@@ -1,16 +1,26 @@
+# ===============================================================================================
+
 import time
+import zipfile
+import logging.config
 from dotenv import load_dotenv
 from ..models import AnaliseAPK
-from .utils import calcular_tempo, salvar_apk, excluir_apk
-from .virustotal import vt_analise_estatica, formatar_orm_bd
+from .adb import gerenciador_adb
+from .infos import infos_apk, abis_apk
 from .urls_ky import analise_urls, whois_urls
 from .permissions import leitura_manifesto_perms
-from .infos import infos_apk, abis_apk
-from .adb import gerenciador_adb
-import zipfile
+from .utils import calcular_tempo, salvar_apk, excluir_apk
+from .virustotal import vt_analise_estatica, formatar_orm_bd
+
+# ===============================================================================================
 
 # Carrega variáveis de ambiente do arquivo .env
 load_dotenv()
+
+# ===============================================================================================
+
+logger_error = logging.getLogger('error')
+logger_info = logging.getLogger('info')
 
 # ===============================================================================================
 
@@ -43,6 +53,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
         # Lê os bytes do arquivo APK
         apk_bytes = apk_file.read()
     except Exception as e:
+        logger_error.error(f"Erro ao ler o arquivo APK: {str(e)}")
         return False, f"Erro ao ler o arquivo APK: {str(e)}"
 
     # ===============================================================================================
@@ -53,6 +64,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
     except Exception as e:
         frmt_redesameacas, frmt_contextorede, frmt_classificacao, frmt_antivirus, hashs = formatar_orm_bd({}, {}, {}, {}, {})
         ocorreu_erro = True
+        logger_error.error(f"Erro na analise estatica com VirusTotal: {str(e)}")
         msg_erro = f"Erro na análise estática com VirusTotal: {str(e)}"
 
     # ===============================================================================================
@@ -67,7 +79,10 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
         except Exception as e:
             urls = []
             ocorreu_erro = True
+            logger_error.error(f"Erro na analise de URLs-1: {str(e)}")
             msg_erro = f"Erro na análise de URLs-1: {str(e)}"
+        
+        # ===============================================================================================
 
         # Análise de ABIs
         try:
@@ -75,6 +90,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
         except Exception as e:
             abis = []
             ocorreu_erro = True
+            logger_error.error(f"Erro na analise das ABIs do APK: {str(e)}")
             msg_erro = f"Erro na análise das ABIs do APK: {str(e)}"
     
     # ===============================================================================================
@@ -85,6 +101,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
     except Exception as e:
         perms_detalhadas, perms_declaradas = {}, {}
         ocorreu_erro = True
+        logger_error.error(f"Erro na leitura de permissoes: {str(e)}")
         msg_erro = f"Erro na leitura de permissões: {str(e)}"
 
     # ===============================================================================================
@@ -95,6 +112,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
     except Exception as e:
         nome_do_pacote, atividade_principal, todas_atividades, todos_servicos = '', '', [], []
         ocorreu_erro = True
+        logger_error.error(f"Erro ao obter informacoes detalhadas do APK: {str(e)}")
         msg_erro = f"Erro ao obter informações detalhadas do APK: {str(e)}"
 
     # ===============================================================================================
@@ -105,6 +123,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
     except Exception as e:
         info_urls = []
         ocorreu_erro = True
+        logger_error.error(f"Erro na analise de URLs-2: {str(e)}")
         msg_erro = f"Erro na análise de URLs-2: {str(e)}"
 
     # ===============================================================================================
@@ -150,6 +169,8 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
     # Verificação de ABIS para análise dinâmica
     if flag_dinamica and ('x86' in abis or 'x86_64' in abis):
 
+        logger_info.info(f"Analise dinamica validada, ABIS: {abis}")
+
         # Inicializa a flag para arquitetura x86 e x86_64
         flag_x86_e_X86_64 = False
         if 'x86' in abis and 'x86_64' not in abis:
@@ -160,7 +181,7 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
             flag_x86_e_X86_64 = False
 
         # ===============================================================================================
-        print("aq")
+
         # Chama o gerenciador ADB
         status, dumpsys_bd, logcat_bd, arquivos_modificados, mensagem_erro, caminho_upload_pcap = gerenciador_adb(
             flag_x86_e_X86_64, caminho_apk, hash_sha256, nome_do_pacote, apk_id
@@ -169,10 +190,9 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
         # ===============================================================================================
 
         if status:
+
             excluir_apk(caminho_apk)
 
-            # ===============================================================================================
-            print("a")
             # Atualiza o campo 'dinamica' e 'tempo' no banco de dados após a análise dinâmica
             tempo_final = calcular_tempo(tempo_inicio, time.time())
             AnaliseAPK.objects.filter(id_json=apk_id).update(
@@ -185,22 +205,26 @@ def analisar_arquivo(apk_file, user_id, nome_arquivo, extensao, flag_dinamica):
                 tempo=tempo_final
             )
 
+            logger_info.info(f"Analise dinamica concluida com sucesso.")
             msg_info_dinamica = "Análise dinâmica realizada com sucesso."
 
             # ===============================================================================================
 
         else:
             ocorreu_erro = True
+            logger_error.error(f"Erro durante a analise dinamica: {mensagem_erro}")
             msg_erro = f"Erro durante a análise dinâmica: {mensagem_erro}"
 
     # ===============================================================================================
 
     elif flag_dinamica and ('armeabi' in abis or 'armeabi-v7a' in abis or 'arm64-v8a' in abis):
+        logger_info.warning(f"APK sem suporte para analise dinamica, ABIS: {abis}")
         msg_info_dinamica = "A análise dinâmica não está disponível para as arquiteturas do APK fornecido: armeabi, armeabi-v7a ou arm64-v8a."
 
     # ===============================================================================================
 
     else:
+        logger_info.info(f"Analise dinamica desabilitada.")
         msg_info_dinamica = "Análise dinâmica está desabilitada."
 
     # ===============================================================================================

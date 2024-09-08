@@ -1,8 +1,9 @@
 # ==================================================================================================================
 
 
-from pathlib import Path
 import os
+import logging.config
+from pathlib import Path
 from dotenv import load_dotenv
 
 
@@ -32,16 +33,17 @@ DEBUG = True
 RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY')
 RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')
 
+
 # ==================================================================================================================
 
 
 """ PRÁTICAS DE SEGURANÇA """
 
-ALLOWED_HOSTS = ['analisador.cloud','www.analisador.cloud','127.0.0.1', '10.0.0.11']
-CSRF_TRUSTED_ORIGINS = ['https://analisador.cloud', 'https://www.analisador.cloud', 'http://10.0.0.11']
+# settings.py
+FILE_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100MB
 
-#ALLOWED_HOSTS = ['analisador.cloud','www.analisador.cloud','127.0.0.1']
-#CSRF_TRUSTED_ORIGINS = ['https://analisador.cloud', 'https://www.analisador.cloud']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_ALLOWED_HOSTS").split(',')
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
@@ -50,6 +52,11 @@ CSRF_COOKIE_HTTPONLY = True
 
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_BROWSER_XSS_FILTER = True  # Proteção contra ataques XSS
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Impede que o navegador detecte o tipo de conteúdo incorretamente
+X_FRAME_OPTIONS = 'DENY'  # Protege contra cliques em links maliciosos em iframes
+SECURE_REFERRER_POLICY = 'same-origin'  # Envia referenciadores apenas dentro do mesmo domínio
 
 
 # ==================================================================================================================
@@ -129,9 +136,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': {
-            'min_length': 8,
-        }
+            'OPTIONS': {
+                'min_length': 8,
+            }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MaximumLengthValidator',
+            'OPTIONS': {
+                'max_length': 128,
+            },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -192,43 +205,94 @@ PWA_APP_ICONS = [
 
 # ==================================================================================================================
 
-
 """ CONFIGURAÇÕES SECUNDÁRIAS DO PWA """
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+
+# ==================================================================================================================
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                       'pathname=%(pathname)s lineno=%(lineno)s ' +
-                       'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S'
+        'default': {
+            'format': ('%(asctime)s - %(levelname)s - ' +
+            'Arquivo: %(filename)s - Linha: %(lineno)s - ' +
+            'Modulo: %(funcName)s - %(message)s'),
+            'datefmt': '%d-%m-%Y %H:%M:%S'
         },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        }
+        'access': {
+            'format': ('%(asctime)s - %(levelname)s - ' +
+            'Arquivo: %(filename)s - Linha: %(lineno)s - ' +
+            'Modulo: %(funcName)s - %(message)s'),
+            'datefmt': '%d-%m-%Y %H:%M:%S'
+        },
+        'error': {
+            'format': ('%(asctime)s - %(levelname)s - ' +
+            'Arquivo: %(filename)s - Linha: %(lineno)s - ' +
+            'Modulo: %(funcName)s - %(message)s'),
+            'datefmt': '%d-%m-%Y %H:%M:%S'
+        },
+        'info': {
+            'format': ('%(asctime)s - %(levelname)s - ' +
+            'Arquivo: %(filename)s - Linha: %(lineno)s - ' +
+            'Modulo: %(funcName)s - %(message)s'),
+            'datefmt': '%d-%m-%Y %H:%M:%S'
+        },
     },
     'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
+        'access': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '../logs/access.log',
+            'formatter': 'access',
         },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        }
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '../logs/error.log',
+            'formatter': 'error',
+        },
+        'info': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '../logs/info.log',
+            'formatter': 'info',
+        },
+        'default': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': '../logs/default.log',
+            'formatter': 'default',
+        },
     },
     'loggers': {
-        'testlogger': {
-            'handlers': ['console'],
+        'django': {
+            'handlers': ['default'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+        'access': {
+            'handlers': ['access'],
             'level': 'INFO',
-        }
-    }
+            'propagate': False,
+        },
+        'error': {
+            'handlers': ['error'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'info': {
+            'handlers': ['info'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
 }
+
+logging.config.dictConfig(LOGGING)
 
 
 # ==================================================================================================================
+

@@ -1,8 +1,8 @@
 # ==================================================================================================================
 
 
+from . import views
 from django.urls import path
-from . import views, security
 
 
 # ==================================================================================================================
@@ -28,8 +28,13 @@ urlpatterns = [
     path('ativacao/', views.ativar_email, name='ativacao'),
     path('reenviar/', views.reenvio_confirmacao, name='reenvio'),
 
+    # ====================================================
+
     path('download/<path:caminho_arquivo>/', views.baixar_pcap, name='baixar_pcap'),
 
+    # ====================================================
+
+    path('403/', views.erro_403, name='403'),
 ]
 
 
