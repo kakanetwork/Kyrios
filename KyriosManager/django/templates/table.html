@@ -30,88 +30,20 @@
     <!-- Template Stylesheet -->
     <link href="/static/css/style.css" rel="stylesheet">
 
-    <style>
-        /* Garante que todo o conteúdo das células fique em uma única linha */
-        #tabela-analises th, #tabela-analises td {
-            white-space: nowrap;
-        }
-
-        #tabela-analises2 th, #tabela-analises2 td {
-            white-space: nowrap;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+        {% include 'includes/spinner.html' %}
 
+        {% include 'includes/faq.html' %}
        
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            
-            <nav class="navbar bg-secondary navbar-dark">
-                
-                <a href="{% url 'home' %}" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary" style="margin-top: 10px;"><i class="fas fa-shield-alt"></i> Kyrios Analysis</h3>
-                </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="/static/img/user.png" alt="" style="width: 30px; height: 30px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">{{ request.session.username }}</h6>
-                        <span>Usuário</span>
-                    </div>
-                </div>
-                <div class="navbar-nav w-100">
-                    <a href="{% url 'home' %}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
-                    <a href="{% url 'table' %}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Histórico</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Opções da Conta</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{% url 'signup' %}" class="dropdown-item">Criar uma nova Conta</a>
-                            <a href="{% url 'logout' %}" class="dropdown-item">Sair da Conta</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- Sidebar End -->
-
+        {% include 'includes/sidebar.html' %}
 
         <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
 
-                <div class="navbar-nav align-items-center ms-auto">
-        
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="/static/img/user.png" alt="" style="width:30px; height: 30px;">
-                            <span class="d-none d-lg-inline-flex">{{ request.session.username }}</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0 dropdown-shadow">
-                            <!-- <a href="#" class="dropdown-item">Meu Perfil</a>
-                            <a href="#" class="dropdown-item">Configurações</a> -->
-                            <a href="{% url 'logout' %}" class="dropdown-item ">Sair</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Navbar End -->
-
+            {% include 'includes/navbar.html' %}
 
             <!-- Table Start -->
             <div class="container-fluid pt-4 px-4">
@@ -382,7 +314,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item bg-transparent">
                                     <h2 class="accordion-header" id="headvirustotal">
@@ -505,211 +436,225 @@
                                 </div>
                             </div>
 
-                            <div class="accordion" id="accordionExample">
-                                <div class="accordion-item bg-transparent">
-                                    <h2 class="accordion-header" id="headad">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ad" aria-expanded="false" aria-controls="ad">
-                                            Análise Dinâmica - Kyrios
-                                        </button>
-                                    </h2>
-                                    <div id="ad" class="accordion-collapse collapse" aria-labelledby="ad" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body table-responsive">
+                            {% for analise in analises_apk %}
+                                {% if analise.dinamica.dumpsys %}
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item bg-transparent">
+                                            <h2 class="accordion-header" id="headad">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ad" aria-expanded="false" aria-controls="ad">
+                                                    Análise Dinâmica - Kyrios
+                                                </button>
+                                            </h2>
+                                            <div id="ad" class="accordion-collapse collapse" aria-labelledby="ad" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body table-responsive">
 
-                                            <div class="accordion-item bg-transparent">
-                                                <h2 class="accordion-header" id="headinfoad">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#infoad" aria-expanded="false" aria-controls="infoad">
-                                                        Informações de Execução e Aplicação
-                                                    </button>
-                                                </h2>
-                                                <div id="infoad" class="accordion-collapse collapse" aria-labelledby="headinfoad" data-bs-parent="#ad">
-                                                    <div class="accordion-body table-responsive">
-                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                            <tbody>
-                                                                {% for analise in analises_apk %}
-                                                                        <!-- Dados de AD -->
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">ID do Usuário do APK</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.userId }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">GID do Usuário</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.gid }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Pasta do Código Fonte</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.codePath }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Pasta dos Recursos</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.resourcePath }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Pasta de Dados</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.dataDir }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Arquitetura da CPU Principal</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.primaryCpuAbi }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Outras Arquiteturas suportadas</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.secondaryCpuAbi }}</td>
-                                                                    </tr>
-                                                                    <!-- Informações de versão -->
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Versão do Código</th>
-                                                                        <td>v{{ analise.dinamica.dumpsys.informacoes_versao.versionCode }}.0</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Versão Mínima do SDK</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.informacoes_versao.minSdk }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Versão Alvo do SDK</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.informacoes_versao.targetSdk }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Foi Instalado</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.execucao.instalado }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Está Oculto</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.execucao.oculto }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Foi Suspenso Forçadamente</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.execucao.suspenso }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Foi Parado Forçadamente</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.execucao.parado }}</td>
-                                                                    </tr>
-                                                                    <tr class="text-white">
-                                                                        <th scope="row">Foi Executado sem Permissão</th>
-                                                                        <td>{{ analise.dinamica.dumpsys.execucao.instantaneo }}</td>
-                                                                    </tr>
-                                                                {% endfor %}
-                                                            </tbody>
-                                                        </table>
-                                                        
+                                                    <div class="accordion-item bg-transparent">
+                                                        <h2 class="accordion-header" id="headinfoad">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#infoad" aria-expanded="false" aria-controls="infoad">
+                                                                Informações de Execução e Aplicação
+                                                            </button>
+                                                        </h2>
+                                                        <div id="infoad" class="accordion-collapse collapse" aria-labelledby="headinfoad" data-bs-parent="#ad">
+                                                            <div class="accordion-body table-responsive">
+                                                                <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                                    <tbody>
+                                                                        {% for analise in analises_apk %}
+                                                                                <!-- Dados de AD -->
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">ID do Usuário do APK</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.userId }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">GID do Usuário</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.gid }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Pasta do Código Fonte</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.codePath }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Pasta dos Recursos</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.resourcePath }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Pasta de Dados</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.dataDir }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Arquitetura da CPU Principal</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.primaryCpuAbi }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Outras Arquiteturas suportadas</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.secondaryCpuAbi }}</td>
+                                                                            </tr>
+                                                                            <!-- Informações de versão -->
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Versão do Código</th>
+                                                                                <td>v{{ analise.dinamica.dumpsys.informacoes_versao.versionCode }}.0</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Versão Mínima do SDK</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.informacoes_versao.minSdk }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Versão Alvo do SDK</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.informacoes_versao.targetSdk }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Foi Instalado</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.execucao.instalado }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Está Oculto</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.execucao.oculto }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Foi Suspenso Forçadamente</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.execucao.suspenso }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Foi Parado Forçadamente</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.execucao.parado }}</td>
+                                                                            </tr>
+                                                                            <tr class="text-white">
+                                                                                <th scope="row">Foi Executado sem Permissão</th>
+                                                                                <td>{{ analise.dinamica.dumpsys.execucao.instantaneo }}</td>
+                                                                            </tr>
+                                                                        {% endfor %}
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="accordion-item bg-transparent">
-                                                <h2 class="accordion-header" id="headpermsad">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#permsad" aria-expanded="false" aria-controls="permsad">
-                                                        Detecção de Permissões utilizadas na Instalação
-                                                    </button>
-                                                </h2>
-                                                <div id="permsad" class="accordion-collapse collapse" aria-labelledby="headpermsad" data-bs-parent="#ad">
-                                                    <div class="accordion-body table-responsive">
-                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                            <thead>
-                                                                <tr class="text-white">
-                                                                    <th scope="col">Nome da Permissão</th>
-                                                                    <th scope="col">Permissão foi utilizada</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {% for analise in analises_apk %}
-                                                                    {% for perm, bool in analise.dinamica.dumpsys.permissoes_instalacao.items %}
-                                                                        <tr>
-                                                                            <td>{{ perm }}</td>
-                                                                            <td>{{ bool }}</td>
+                                                    <div class="accordion-item bg-transparent">
+                                                        <h2 class="accordion-header" id="headpermsad">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#permsad" aria-expanded="false" aria-controls="permsad">
+                                                                Detecção de Permissões utilizadas na Instalação
+                                                            </button>
+                                                        </h2>
+                                                        <div id="permsad" class="accordion-collapse collapse" aria-labelledby="headpermsad" data-bs-parent="#ad">
+                                                            <div class="accordion-body table-responsive">
+                                                                <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                                    <thead>
+                                                                        <tr class="text-white">
+                                                                            <th scope="col">Nome da Permissão</th>
+                                                                            <th scope="col">Permissão foi utilizada</th>
                                                                         </tr>
-                                                                    {% endfor %}
-                                                                {% endfor %}
-                                                            </tbody>
-                                                            
-                                                        </table>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for analise in analises_apk %}
+                                                                            {% for perm, bool in analise.dinamica.dumpsys.permissoes_instalacao.items %}
+                                                                                <tr>
+                                                                                    <td>{{ perm }}</td>
+                                                                                    <td>{{ bool }}</td>
+                                                                                </tr>
+                                                                            {% endfor %}
+                                                                        {% endfor %}
+                                                                    </tbody>
+                                                                    
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="accordion-item bg-transparent">
-                                                <h2 class="accordion-header" id="headarqsmod">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#arqsmod" aria-expanded="false" aria-controls="arqsmod">
-                                                        Detecção de Arquivos Criados
-                                                    </button>
-                                                </h2>
-                                                <div id="arqsmod" class="accordion-collapse collapse" aria-labelledby="headarqsmod" data-bs-parent="#ad">
-                                                    <div class="accordion-body table-responsive">
-                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                            <thead>
-                                                                <tr class="text-white">
-                                                                    <th scope="col">Local Absoluto do Arquivo</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {% for analise in analises_apk %}
-                                                                    {% for arquivo in analise.dinamica.arquivos %}
-                                                                        <tr>
-                                                                            <td>{{ arquivo }}</td>
+                                                    <div class="accordion-item bg-transparent">
+                                                        <h2 class="accordion-header" id="headarqsmod">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#arqsmod" aria-expanded="false" aria-controls="arqsmod">
+                                                                Detecção de Arquivos Criados
+                                                            </button>
+                                                        </h2>
+                                                        <div id="arqsmod" class="accordion-collapse collapse" aria-labelledby="headarqsmod" data-bs-parent="#ad">
+                                                            <div class="accordion-body table-responsive">
+                                                                <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                                    <thead>
+                                                                        <tr class="text-white">
+                                                                            <th scope="col">Local Absoluto do Arquivo</th>
                                                                         </tr>
-                                                                    {% endfor %}
-                                                                {% endfor %}
-                                                            </tbody>
-                                                            
-                                                        </table>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for analise in analises_apk %}
+                                                                            {% for arquivo in analise.dinamica.arquivos %}
+                                                                                <tr>
+                                                                                    <td>{{ arquivo }}</td>
+                                                                                </tr>
+                                                                            {% endfor %}
+                                                                        {% endfor %}
+                                                                    </tbody>
+                                                                    
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="accordion-item bg-transparent">
-                                                <h2 class="accordion-header" id="headlog2">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#log2" aria-expanded="false" aria-controls="log2">
-                                                        Detecção de Rede - Arquivo PCAP
-                                                    </button>
-                                                </h2>
-                                                <div id="log2" class="accordion-collapse collapse" aria-labelledby="headlog2" data-bs-parent="#ad">
-                                                    <div class="accordion-body">
-                                                        {% for analise in analises_apk %}
-                                                            {% if analise.dinamica.upload_url %}
-                                                                <a href="{% url 'baixar_pcap' analise.dinamica.upload_url %}" class="btn btn-primary">Baixar Arquivo PCAP - Análise da Rede</a>
-                                                            {% else %}
-                                                                <p>Nenhum arquivo disponível para download.</p>
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="accordion-item bg-transparent">
-                                                <h2 class="accordion-header" id="headlogsad">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#logsad" aria-expanded="false" aria-controls="logsad">
-                                                        Detecção de Logs
-                                                    </button>
-                                                </h2>
-                                                <div id="logsad" class="accordion-collapse collapse" aria-labelledby="headlogsad" data-bs-parent="#ad">
-                                                    <div class="accordion-body table-responsive">
-                                                        <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
-                                                            <thead>
-                                                                <tr class="text-white">
-                                                                    <th scope="col">N°</th>
-                                                                    <th scope="col">Mensagem do Log</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                    <div class="accordion-item bg-transparent">
+                                                        <h2 class="accordion-header" id="headlog2">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#log2" aria-expanded="false" aria-controls="log2">
+                                                                Detecção de Rede - Arquivo PCAP
+                                                            </button>
+                                                        </h2>
+                                                        <div id="log2" class="accordion-collapse collapse" aria-labelledby="headlog2" data-bs-parent="#ad">
+                                                            <div class="accordion-body">
                                                                 {% for analise in analises_apk %}
-                                                                    {% for linha, log in analise.dinamica.logs.items %}
-                                                                        <tr>
-                                                                            <td>{{ linha }}</td>
-                                                                            <td>{{ log }}</td>
-                                                                        </tr>
-                                                                    {% endfor %}
+                                                                    {% if analise.dinamica.upload_url %}
+                                                                        <a href="{% url 'baixar_pcap' analise.dinamica.upload_url %}" class="btn btn-primary">Baixar Arquivo PCAP - Análise da Rede</a>
+                                                                    {% else %}
+                                                                        <p>Nenhum arquivo disponível para download.</p>
+                                                                    {% endif %}
                                                                 {% endfor %}
-                                                            </tbody>
-                                                            
-                                                        </table>
+                                                            </div>
+                                                        </div>
                                                     </div>
+
+                                                    <div class="accordion-item bg-transparent">
+                                                        <h2 class="accordion-header" id="headlogsad">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#logsad" aria-expanded="false" aria-controls="logsad">
+                                                                Detecção de Logs
+                                                            </button>
+                                                        </h2>
+                                                        <div id="logsad" class="accordion-collapse collapse" aria-labelledby="headlogsad" data-bs-parent="#ad">
+                                                            <div class="accordion-body table-responsive">
+                                                                <table id="tabela-analises2" class="table text-start align-middle table-bordered table-hover mb-0">
+                                                                    <thead>
+                                                                        <tr class="text-white">
+                                                                            <th scope="col">N°</th>
+                                                                            <th scope="col">Mensagem do Log</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for analise in analises_apk %}
+                                                                            {% for linha, log in analise.dinamica.logs.items %}
+                                                                                <tr>
+                                                                                    <td>{{ linha }}</td>
+                                                                                    <td>{{ log }}</td>
+                                                                                </tr>
+                                                                            {% endfor %}
+                                                                        {% endfor %}
+                                                                    </tbody>
+                                                                    
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                {% else %}
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item bg-transparent">
+                                            <h2 class="accordion-header" id="headad">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ad" aria-expanded="false" aria-controls="ad" disabled, style="cursor: not-allowed">
+                                                    Análise Dinâmica - Kyrios - (Não realizada)
+                                                </button>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>     
                 </div>
@@ -777,16 +722,9 @@
             </div>
             <!-- Table End -->
             <div class="space-after-table"></div>   
-            <!-- Footer Start -->
-            <div class="fixed-bottom pt-4 ">
-                <div class="bg-secondary p-4 footer-shadow">
-                    <div class="row ">
-                        <div class="col-12 col-sm-6 text-center text-sm-start ">
-                            &copy; <a href="#">Kyrios</a>, Open Source - <a href="https://github.com/kakanetwork/kyrios">Código Fonte</a>.
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            {% include 'includes/rodape.html' %}
+
             <!-- Footer End -->
         </div>
         <!-- Content End -->

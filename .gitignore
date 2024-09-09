@@ -7,3 +7,4 @@
 #.idea/
 KyriosManager/KyriosMachine/django/response3
 KyriosManager/KyriosMachine/django/response4
+*.log
