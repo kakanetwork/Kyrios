@@ -1,22 +1,3 @@
-FROM debian:12.6
-
-WORKDIR /var/android_sdk
-
-COPY cmdline-tools /var/android_sdk/cmdline-tools
-
-RUN apt-get update -y && \
-    apt-get install default-jdk libpulse0 && \
-    mkdir cmdline-tools/latest && \
-    cd cmdline-tools && \
-    mv bin latest && \
-    mv lib latest && \
-    mv NOTICE.txt latest && \
-    mv source.properties latest
-
-
-CMD ["tail", "-f", "/dev/null"]
-
-
 # cd /var/android_sdk/cmdline-tools/latest/bin
 # apt-get update
 # apt-get install default-jdk libpulse0 (necessita confirmacao)
